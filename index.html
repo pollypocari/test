@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2026 WBC Color Studio (v15 Batch Import)</title>
+    <style>
+      :root {
+        --radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+
+        /* Light Mode Defaults */
+        --bg-body: #f3f4f6;
+        --bg-card: #ffffff;
+        --bg-panel: #fcfcfc;
+        --text-main: #333333;
+        --text-muted: #666666;
+        --border-color: #cccccc;
+        --btn-bg: #ffffff;
+        --btn-text: #374151;
+        --btn-hover: #f3f4f6;
+        --code-bg: #f9f9f9;
+      }
+
+      /* Dark Mode Overrides */
+      [data-theme="dark"] {
+        --bg-body: #111111;
+        --bg-card: #222222;
+        --bg-panel: #2a2a2a;
+        --text-main: #eeeeee;
+        --text-muted: #aaaaaa;
+        --border-color: #444444;
+        --btn-bg: #333333;
+        --btn-text: #eeeeee;
+        --btn-hover: #444444;
+        --code-bg: #333333;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        background-color: var(--bg-body);
+        padding: 40px;
+        color: var(--text-main);
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      h1 {
+        margin-bottom: 5px;
+        color: var(--text-main);
+      }
+      p.intro {
+        color: var(--text-muted);
+        margin-bottom: 30px;
+        max-width: 800px;
+        line-height: 1.6;
+      }
+
+      /* BUTTONS */
+      .action-bar {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap; /* Allow wrapping on small screens */
+      }
+      .btn {
+        padding: 8px 16px;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+        white-space: nowrap;
+        background-color: var(--btn-bg);
+        color: var(--btn-text);
+      }
+      .btn:hover {
+        background-color: var(--btn-hover);
+      }
+
+      .btn-import {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+      }
+      .btn-import:hover {
+        background-color: #0056b3;
+      }
+
+      .btn-download {
+        background-color: #374151;
+        color: #fff;
+        border: none;
+      }
+      .btn-download:hover {
+        background-color: #111;
+      }
+
+      /* CONTAINERS */
+      .pool-container {
+        background: var(--bg-card);
+        border-radius: 16px;
+        padding: 30px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        box-shadow: var(--shadow);
+        position: relative;
+        transition: background-color 0.3s;
+      }
+      .pool-header {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        color: var(--text-main);
+      }
+      .pool-badge {
+        background: #333;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+
+      /* CONTROL ZONE (WRAPPER FOR STICKY LIMIT) */
+      .control-zone {
+        /* This container limits the sticky behavior */
+        position: relative;
+        padding-bottom: 1px; /* Avoid collapsing margin issues */
+      }
+
+      /* SPECTRUM - STICKY */
+      .spectrum-wrapper {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: var(--bg-body);
+        padding: 15px 0;
+        margin-top: -15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition: background-color 0.3s;
+      }
+      .spectrum-container {
+        width: 100%;
+        height: 45px;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+      }
+      .spectrum-segment {
+        flex-grow: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        font-weight: 700;
+        cursor: default;
+        transition: background-color 0.1s;
+      }
+
+      /* CONTROLLER CARD */
+      .global-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+      .global-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        background: var(--bg-card);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        padding-bottom: 12px;
+        transition: background-color 0.3s;
+      }
+      .gc-visual-area {
+        width: 100%;
+        height: 75px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        transition: background-color 0.1s;
+      }
+      .gc-visual-top {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .gc-flag {
+        width: 30px;
+        height: auto;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 2px;
+      }
+      .gc-iso {
+        font-weight: 800;
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+        font-family: monospace;
+      }
+      .gc-aa-info {
+        font-size: 0.7rem;
+        font-family: monospace;
+        font-weight: 700;
+        opacity: 0.9;
+      }
+
+      .gc-name-cn {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--text-main);
+        margin-top: 10px;
+        margin-bottom: 2px;
+      }
+      .gc-name-en {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+
+      .gc-codes {
+        font-family: monospace;
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        background: var(--code-bg);
+        width: 90%;
+        border-radius: 4px;
+        padding: 6px 0;
+        margin-bottom: 10px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+      }
+      .gc-code-line {
+        display: block;
+        line-height: 1.4;
+      }
+
+      .gc-btn-wrapper {
+        position: relative;
+        width: 80%;
+        height: 30px;
+      }
+      .gc-btn-style {
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-body);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        color: var(--text-main);
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .gc-color-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      /* TEAMS GRID */
+      .teams-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+        margin-bottom: 30px;
+      }
+      .team-card {
+        border-radius: var(--radius);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--border-color);
+        background: var(--bg-card);
+        transition: transform 0.2s;
+      }
+      .team-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .team-swatch {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        position: relative;
+        transition: background-color 0.1s;
+      }
+      .team-flag {
+        width: 36px;
+        height: auto;
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 2px;
+      }
+      .team-iso {
+        font-weight: 800;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+      }
+      .team-info {
+        padding: 10px;
+        text-align: center;
+        background: var(--bg-card);
+      }
+      .team-name {
+        font-weight: 700;
+        font-size: 0.85rem;
+        display: block;
+        margin-bottom: 2px;
+        color: var(--text-main);
+      }
+      .team-name-en {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+      }
+
+      /* --- NEW MATCHUP UI CSS --- */
+      .vs-label {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-left: 4px solid #333;
+        padding-left: 10px;
+      }
+      /* Modified Grid to ensure consistency across pools */
+      .vs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+      }
+
+      .match-wrapper {
+        background: var(--bg-panel);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .match-date-header {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 0;
+      }
+      .ui-label {
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        font-weight: 700;
+        margin-bottom: 2px;
+        display: block;
+        text-transform: uppercase;
+      }
+
+      /* UI 1: Pitcher Bar */
+      .ui-pitcher {
+        display: flex;
+        height: 60px;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .pitcher-side {
+        flex: 1; /* 50% width */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        line-height: 1.2;
+        gap: 4px;
+      }
+      .p-name {
+        font-size: 0.75rem;
+        font-weight: 800;
+        opacity: 0.95;
+      }
+      .p-nation {
+        font-size: 0.7rem;
+        font-weight: 400;
+        opacity: 0.85;
+      }
+
+      /* UI 2 & 3: Tab Bar */
+      .ui-tab-bar {
+        display: flex;
+        height: 48px;
+        border-radius: 6px;
+        overflow: hidden;
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+      .tab-side {
+        flex: 1; /* Force 50% */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+        position: relative;
+      }
+      .tab-active {
+        z-index: 1;
+      }
+      .tab-inactive {
+        filter: grayscale(100%);
+        background: #e0e0e0 !important;
+        color: #111 !important;
+      }
+      [data-theme="dark"] .tab-inactive {
+        background: #333 !important;
+        color: #666 !important;
+      }
+
+      /* UI 4: Diagonal */
+      .ui-diagonal {
+        width: 280px;
+        height: 158px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+      }
+      .diag-left {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 68%;
+        clip-path: polygon(0 0, 100% 0, 28% 100%, 0 100%);
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 10%;
+      }
+      .diag-left img {
+        position: absolute;
+        top: 26px;
+        left: 84px;
+      }
+      .diag-right img {
+        position: absolute;
+        bottom: 26px;
+        right: 82px;
+      }
+      .diag-right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 12%;
+      }
+      .diag-flag {
+        width: 72px;
+        height: auto;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 2px;
+      }
+      .landscape {
+        width: 114px;
+        height: 64px;
+        overflow: hidden;
+        border-radius: 7px;
+      }
+      .landscape .ui-diagonal {
+        transform: scale(0.405);
+        transform-origin: left top;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+      }
+      .square {
+        width: 42px;
+        height: 42px;
+        overflow: hidden;
+        border-radius: 7px;
+      }
+      .square .ui-diagonal {
+        transform: scale(0.2658);
+        transform-origin: left top;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        margin-left: -17px;
+      }
+
+      .t-white {
+        color: #fff;
+      }
+      .t-dark {
+        color: #111;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>2026 WBC Palette Studio</h1>
+    <p class="intro">
+      <strong>色彩控制台 (v15 Batch Import)：</strong>
+      <br />1. 新增「Batch Import」按鈕，可一次匯入 20 個 Hex 色碼。 <br />2.
+      色碼將依序套用於 Pool A -> B -> C -> D 的球隊。
+    </p>
+
+    <div class="control-zone">
+      <div class="spectrum-wrapper">
+        <div class="action-bar">
+          <button
+            class="btn btn-theme"
+            onclick="toggleTheme()"
+            title="Toggle Theme"
+          >
+            🌓 Theme
+          </button>
+          <button class="btn btn-import" onclick="batchImport()">
+            Batch Import
+          </button>
+          <button class="btn" onclick="resetToDefaults()">
+            Reset to Defaults
+          </button>
+          <button class="btn" onclick="saveColors()">Save to Browser</button>
+          <button class="btn" onclick="overrideDefault()">
+            Override Memory
+          </button>
+          <button class="btn btn-download" onclick="exportHTML()">
+            Download New HTML
+          </button>
+        </div>
+        <div class="spectrum-container" id="spectrumBar"></div>
+      </div>
+      <div class="pool-container" style="border-left: 5px solid #333">
+        <div class="pool-header" style="border-color: var(--border-color)">
+          <div style="display: flex; align-items: center; gap: 10px">
+            <span class="pool-badge">Controller</span>
+            <span>Global Palette</span>
+          </div>
+        </div>
+        <div class="global-grid" id="globalGrid"></div>
+      </div>
+    </div>
+
+    <div id="poolsContainer"></div>
+
+    <script id="scriptData">
+      // --- 1. CONFIGURATION ---
+      // 固定順序清單，用於 Batch Import
+      const TEAM_ORDER = [
+        "CA",
+        "CO",
+        "CU",
+        "PA",
+        "PR", // Pool A
+        "BR",
+        "GB",
+        "IT",
+        "MX",
+        "US", // Pool B
+        "AU",
+        "TW",
+        "CZ",
+        "JP",
+        "KR", // Pool C
+        "DO",
+        "IL",
+        "NL",
+        "NI",
+        "VE", // Pool D
+      ];
+
+      const TEAM_INFO = {
+        CA: {
+          name: "加拿大",
+          nameEn: "Canada",
+          code: "CAN",
+          abbr: "加",
+          pool: "A",
+        },
+        CO: {
+          name: "哥倫比亞",
+          nameEn: "Colombia",
+          code: "COL",
+          abbr: "哥",
+          pool: "A",
+        },
+        CU: {
+          name: "古巴",
+          nameEn: "Cuba",
+          code: "CUB",
+          abbr: "古",
+          pool: "A",
+        },
+        PA: {
+          name: "巴拿馬",
+          nameEn: "Panama",
+          code: "PAN",
+          abbr: "巴",
+          pool: "A",
+        },
+        PR: {
+          name: "波多黎各",
+          nameEn: "Puerto Rico",
+          code: "PUR",
+          abbr: "波",
+          pool: "A",
+        },
+        BR: {
+          name: "巴西",
+          nameEn: "Brazil",
+          code: "BRA",
+          abbr: "西",
+          pool: "B",
+        },
+        GB: {
+          name: "英國",
+          nameEn: "Great Britain",
+          code: "GBR",
+          abbr: "英",
+          pool: "B",
+        },
+        IT: {
+          name: "義大利",
+          nameEn: "Italy",
+          code: "ITA",
+          abbr: "義",
+          pool: "B",
+        },
+        MX: {
+          name: "墨西哥",
+          nameEn: "Mexico",
+          code: "MEX",
+          abbr: "墨",
+          pool: "B",
+        },
+        US: { name: "美國", nameEn: "USA", code: "USA", abbr: "美", pool: "B" },
+        AU: {
+          name: "澳洲",
+          nameEn: "Australia",
+          code: "AUS",
+          abbr: "澳",
+          pool: "C",
+        },
+        TW: {
+          name: "中華臺北",
+          nameEn: "Taiwan",
+          code: "TPE",
+          abbr: "台",
+          pool: "C",
+        },
+        CZ: {
+          name: "捷克",
+          nameEn: "Czechia",
+          code: "CZE",
+          abbr: "捷",
+          pool: "C",
+        },
+        JP: {
+          name: "日本",
+          nameEn: "Japan",
+          code: "JPN",
+          abbr: "日",
+          pool: "C",
+        },
+        KR: {
+          name: "南韓",
+          nameEn: "Korea",
+          code: "KOR",
+          abbr: "韓",
+          pool: "C",
+        },
+        DO: {
+          name: "多明尼加",
+          nameEn: "D.R.",
+          code: "DOM",
+          abbr: "多",
+          pool: "D",
+        },
+        IL: {
+          name: "以色列",
+          nameEn: "Israel",
+          code: "ISR",
+          abbr: "以",
+          pool: "D",
+        },
+        NL: {
+          name: "荷蘭",
+          nameEn: "Netherlands",
+          code: "NED",
+          abbr: "荷",
+          pool: "D",
+        },
+        NI: {
+          name: "尼加拉瓜",
+          nameEn: "Nicaragua",
+          code: "NCA",
+          abbr: "尼",
+          pool: "D",
+        },
+        VE: {
+          name: "委內瑞拉",
+          nameEn: "Venezuela",
+          code: "VEN",
+          abbr: "委",
+          pool: "D",
+        },
+      };
+
+      let DEFAULT_COLORS = {
+        PR: "#1B72E8",
+        CU: "#302b7a",
+        CA: "#620E1C",
+        PA: "#c44a4e",
+        CO: "#FBEC89",
+        US: "#0A1528",
+        MX: "#004028",
+        IT: "#3161B9",
+        GB: "#E61938",
+        BR: "#FFD500",
+        JP: "#9B0000",
+        CZ: "#C24E00",
+        KR: "#002C52",
+        TW: "#15379E",
+        AU: "#007A4B",
+        VE: "#ffbb3d",
+        DO: "#004D9A",
+        NL: "#ff8e52",
+        IL: "#D6ECF9",
+        NI: "#86CDF4",
+      };
+
+      const POOL_META = {
+        A: { city: "San Juan, Puerto Rico", color: "#0038A8" },
+        B: { city: "Houston, USA", color: "#333" },
+        C: { city: "Tokyo, Japan", color: "#0099CC" },
+        D: { city: "Miami, USA", color: "#C64508" },
+      };
+
+      const SCHEDULE = {
+        A: [
+          { d: "3/6 12:00", away: "CU", home: "PA" },
+          { d: "3/6 19:00", away: "PR", home: "CO" },
+          { d: "3/7 12:00", away: "CO", home: "CA" },
+          { d: "3/7 19:00", away: "PA", home: "PR" },
+          { d: "3/8 12:00", away: "CO", home: "CU" },
+          { d: "3/8 19:00", away: "PA", home: "CA" },
+          { d: "3/9 12:00", away: "CO", home: "PA" },
+          { d: "3/9 19:00", away: "CU", home: "PR" },
+          { d: "3/10 19:00", away: "CA", home: "PR" },
+          { d: "3/11 15:00", away: "CA", home: "CU" },
+        ],
+        B: [
+          { d: "3/6 12:00", away: "MX", home: "GB" },
+          { d: "3/6 19:00", away: "US", home: "BR" },
+          { d: "3/7 12:00", away: "BR", home: "IT" },
+          { d: "3/7 19:00", away: "GB", home: "US" },
+          { d: "3/8 12:00", away: "GB", home: "IT" },
+          { d: "3/8 19:00", away: "BR", home: "MX" },
+          { d: "3/9 12:00", away: "BR", home: "GB" },
+          { d: "3/9 19:00", away: "MX", home: "US" },
+          { d: "3/10 20:00", away: "IT", home: "US" },
+          { d: "3/11 18:00", away: "IT", home: "MX" },
+        ],
+        C: [
+          { d: "3/5 12:00", away: "TW", home: "AU" },
+          { d: "3/5 19:00", away: "CZ", home: "KR" },
+          { d: "3/6 12:00", away: "AU", home: "CZ" },
+          { d: "3/6 19:00", away: "JP", home: "TW" },
+          { d: "3/7 12:00", away: "TW", home: "CZ" },
+          { d: "3/7 19:00", away: "KR", home: "JP" },
+          { d: "3/8 12:00", away: "TW", home: "KR" },
+          { d: "3/8 19:00", away: "AU", home: "JP" },
+          { d: "3/9 19:00", away: "KR", home: "AU" },
+          { d: "3/10 19:00", away: "CZ", home: "JP" },
+        ],
+        D: [
+          { d: "3/6 12:00", away: "NL", home: "VE" },
+          { d: "3/6 19:00", away: "NI", home: "DO" },
+          { d: "3/7 12:00", away: "NI", home: "NL" },
+          { d: "3/7 19:00", away: "IL", home: "VE" },
+          { d: "3/8 12:00", away: "NL", home: "DO" },
+          { d: "3/8 19:00", away: "NI", home: "IL" },
+          { d: "3/9 12:00", away: "DO", home: "IL" },
+          { d: "3/9 19:00", away: "VE", home: "NI" },
+          { d: "3/10 19:00", away: "IL", home: "NL" },
+          { d: "3/11 20:00", away: "DO", home: "VE" },
+        ],
+      };
+
+      let currentColors = {};
+
+      // THEME
+      function initTheme() {
+        const savedTheme = localStorage.getItem("wbc_theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      }
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute("data-theme");
+        const next = current === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("wbc_theme", next);
+      }
+
+      // BATCH IMPORT
+      function batchImport() {
+        const input = prompt(
+          "請貼上 20 個 Hex 色碼（順序：A池5隊 -> B池5隊 -> C池5隊 -> D池5隊）\n以逗號、空格或換行分隔："
+        );
+        if (!input) return;
+
+        // Extract hex codes using regex
+        const matches = input.match(/#[0-9a-fA-F]{6}|#[0-9a-fA-F]{3}/g);
+
+        if (!matches || matches.length === 0) {
+          alert("找不到有效的 Hex 色碼！");
+          return;
+        }
+
+        if (matches.length !== 20) {
+          if (
+            !confirm(
+              `偵測到 ${matches.length} 個色碼（預期 20 個）。\n順序將依照：Pool A -> B -> C -> D。\n是否繼續？`
+            )
+          ) {
+            return;
+          }
+        }
+
+        // Apply colors in order
+        let count = 0;
+        TEAM_ORDER.forEach((teamCode, index) => {
+          if (index < matches.length) {
+            // Ensure full 6-digit hex if 3-digit provided
+            let hex = matches[index];
+            if (hex.length === 4) {
+              hex = "#" + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
+            }
+            updateTeamColor(teamCode, hex);
+            // Also update the input field value in controller
+            document.getElementById(`input-${teamCode}`).value = hex;
+            count++;
+          }
+        });
+
+        alert(`成功匯入 ${count} 個隊伍顏色！`);
+        saveColors(); // Auto save after import
+      }
+
+      // HELPERS
+      function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result
+          ? {
+              r: parseInt(result[1], 16),
+              g: parseInt(result[2], 16),
+              b: parseInt(result[3], 16),
+            }
+          : null;
+      }
+      function getLuminance(r, g, b) {
+        var a = [r, g, b].map(function (v) {
+          v /= 255;
+          return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+        });
+        return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+      }
+      function getContrastRatio(bgHex, textHex) {
+        const rgb1 = hexToRgb(bgHex);
+        const rgb2 = hexToRgb(textHex);
+        if (!rgb1 || !rgb2) return 0;
+        const l1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
+        const l2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+        return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+      }
+      function getBestTextColor(bgHex) {
+        const rW = getContrastRatio(bgHex, "#FFFFFF");
+        const rD = getContrastRatio(bgHex, "#111111");
+        return rW >= rD
+          ? { color: "t-white", ratio: rW }
+          : { color: "t-dark", ratio: rD };
+      }
+      function hexToHsl(hex) {
+        let { r, g, b } = hexToRgb(hex);
+        (r /= 255), (g /= 255), (b /= 255);
+        let max = Math.max(r, g, b),
+          min = Math.min(r, g, b);
+        let h,
+          s,
+          l = (max + min) / 2;
+        if (max == min) {
+          h = s = 0;
+        } else {
+          let d = max - min;
+          s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+          switch (max) {
+            case r:
+              h = (g - b) / d + (g < b ? 6 : 0);
+              break;
+            case g:
+              h = (b - r) / d + 2;
+              break;
+            case b:
+              h = (r - g) / d + 4;
+              break;
+          }
+          h /= 6;
+        }
+        return { h: h * 360, s: s * 100, l: l * 100 };
+      }
+
+      // LOGIC
+      function init() {
+        initTheme();
+        loadColors();
+        renderPoolStructure();
+        renderController();
+        applyAllColors();
+      }
+      function loadColors() {
+        const saved = localStorage.getItem("wbc_colors_v9");
+        currentColors = saved ? JSON.parse(saved) : { ...DEFAULT_COLORS };
+      }
+      function saveColors() {
+        localStorage.setItem("wbc_colors_v9", JSON.stringify(currentColors));
+        alert("色彩已儲存至瀏覽器快取！");
+      }
+      function overrideDefault() {
+        if (
+          confirm("這將覆蓋記憶體中的 DEFAULT_COLORS。Reset 時會回到此狀態。")
+        ) {
+          DEFAULT_COLORS = { ...currentColors };
+        }
+      }
+      function resetToDefaults() {
+        if (confirm("還原成預設配色？")) {
+          currentColors = { ...DEFAULT_COLORS };
+          localStorage.removeItem("wbc_colors_v9");
+          renderController();
+          applyAllColors();
+        }
+      }
+      function exportHTML() {
+        const currentHTML = document.documentElement.outerHTML;
+        let newColorString = "let DEFAULT_COLORS = {\n";
+        for (let team in currentColors) {
+          newColorString += `        ${team}: "${currentColors[team]}",\n`;
+        }
+        newColorString += "      };";
+        const regex = /let DEFAULT_COLORS = \{[\s\S]*?\};/;
+        const updatedHTML = currentHTML.replace(regex, newColorString);
+        const blob = new Blob([updatedHTML], { type: "text/html" });
+        const a = document.createElement("a");
+        const now = new Date();
+        a.href = URL.createObjectURL(blob);
+        a.download = `wbc-color-${now.getFullYear()}${String(
+          now.getMonth() + 1
+        ).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}.html`;
+        a.click();
+      }
+
+      function updateSpectrum() {
+        const bar = document.getElementById("spectrumBar");
+        bar.innerHTML = "";
+        const sorted = Object.keys(currentColors)
+          .map((k) => ({
+            k,
+            h: currentColors[k],
+            hsl: hexToHsl(currentColors[k]),
+          }))
+          .sort((a, b) => {
+            let hA = a.hsl.h > 330 ? a.hsl.h - 360 : a.hsl.h;
+            let hB = b.hsl.h > 330 ? b.hsl.h - 360 : b.hsl.h;
+            return Math.abs(hA - hB) > 20 ? hA - hB : b.hsl.l - a.hsl.l;
+          });
+        sorted.forEach((i) => {
+          const div = document.createElement("div");
+          div.className = "spectrum-segment";
+          div.style.backgroundColor = i.h;
+          div.innerText = TEAM_INFO[i.k].abbr;
+          const bt = getBestTextColor(i.h);
+          div.style.color = bt.color === "t-dark" ? "#111" : "#fff";
+          // Scroll to controller card on click
+          div.onclick = () => {
+            document
+              .getElementById(`visual-${i.k}`)
+              .scrollIntoView({ behavior: "smooth", block: "center" });
+          };
+          bar.appendChild(div);
+        });
+      }
+
+      function renderController() {
+        const container = document.getElementById("globalGrid");
+        container.innerHTML = "";
+        Object.keys(TEAM_INFO).forEach((key) => {
+          const t = TEAM_INFO[key];
+          const hex = currentColors[key];
+          const div = document.createElement("div");
+          div.className = "global-card";
+          div.innerHTML = `
+                <div class="gc-visual-area" id="visual-${key}">
+                    <div class="gc-visual-top"><img src="https://flagcdn.com/w40/${key.toLowerCase()}.png" class="gc-flag"><span class="gc-iso ${key}-iso">${
+            t.code
+          }</span></div>
+                    <div class="gc-aa-info ${key}-aa-text" id="label-aa-${key}">AA --</div>
+                </div>
+                <div class="gc-name-cn">${
+                  t.name
+                }</div><div class="gc-name-en">${t.nameEn}</div>
+                <div class="gc-codes"><span class="gc-code-line" id="label-hex-${key}">${hex.toUpperCase()}</span><span class="gc-code-line" id="label-rgb-${key}">rgb(...)</span></div>
+                <div class="gc-btn-wrapper"><div class="gc-btn-style">Adjust Color</div><input type="color" class="gc-color-input" id="input-${key}" value="${hex}"></div>
+            `;
+          container.appendChild(div);
+          document
+            .getElementById(`input-${key}`)
+            .addEventListener("input", (e) =>
+              updateTeamColor(key, e.target.value)
+            );
+        });
+      }
+
+      function renderPoolStructure() {
+        const container = document.getElementById("poolsContainer");
+        container.innerHTML = "";
+        Object.keys(POOL_META).forEach((p) => {
+          const meta = POOL_META[p];
+          const border = `border-left: 5px solid ${meta.color};`;
+          let tHtml = "";
+          Object.keys(TEAM_INFO)
+            .filter((k) => TEAM_INFO[k].pool === p)
+            .forEach((k) => {
+              const t = TEAM_INFO[k];
+              tHtml += `<div class="team-card"><div class="team-swatch team-swatch-${k}"><img src="https://flagcdn.com/w40/${k.toLowerCase()}.png" class="team-flag"><span class="team-iso ${k}-iso">${
+                t.code
+              }</span></div><div class="team-info"><span class="team-name">${
+                t.name
+              }</span><span class="team-name-en">${
+                t.nameEn
+              }</span></div></div>`;
+            });
+
+          // INJECT NEW MATCHUP UI HERE
+          let sHtml = "";
+          SCHEDULE[p].forEach((g) => {
+            sHtml += `
+              <div class="match-wrapper">
+                <div class="match-date-header"><span>${g.d}</span><span>${
+              TEAM_INFO[g.away].name
+            } vs ${TEAM_INFO[g.home].name}</span></div>
+                
+                <span class="ui-label">1. Pitcher</span>
+                <div class="ui-pitcher">
+                    <div class="pitcher-side side-${g.away}">
+                        <div class="p-name">Start Pitcher</div>
+                        <div class="p-nation">${TEAM_INFO[g.away].name}</div>
+                    </div>
+                    <div class="pitcher-side side-${g.home}">
+                        <div class="p-name">Start Pitcher</div>
+                        <div class="p-nation">${TEAM_INFO[g.home].name}</div>
+                    </div>
+                </div>
+
+                <span class="ui-label">2. Tab (Away Active)</span>
+                <div class="ui-tab-bar">
+                    <div class="tab-side tab-active side-${g.away}">${
+              TEAM_INFO[g.away].name
+            }</div>
+                    <div class="tab-side tab-inactive">${
+                      TEAM_INFO[g.home].name
+                    }</div>
+                </div>
+
+                <span class="ui-label">3. Tab (Home Active)</span>
+                <div class="ui-tab-bar">
+                    <div class="tab-side tab-inactive">${
+                      TEAM_INFO[g.away].name
+                    }</div>
+                    <div class="tab-side tab-active side-${g.home}">${
+              TEAM_INFO[g.home].name
+            }</div>
+                </div>
+
+                <span class="ui-label">4. Diagonal</span>
+                <div class="landscape">
+                    <div class="ui-diagonal">
+                        <div class="diag-left side-${g.away}">
+                            <img src="https://flagcdn.com/w40/${g.away.toLowerCase()}.png" class="diag-flag">
+                        </div>
+                        <div class="diag-right side-${g.home}">
+                            <img src="https://flagcdn.com/w40/${g.home.toLowerCase()}.png" class="diag-flag">
+                        </div>
+                    </div>
+                </div>
+                <div class="square">
+                    <div class="ui-diagonal">
+                        <div class="diag-left side-${g.away}">
+                            <img src="https://flagcdn.com/w40/${g.away.toLowerCase()}.png" class="diag-flag">
+                        </div>
+                        <div class="diag-right side-${g.home}">
+                            <img src="https://flagcdn.com/w40/${g.home.toLowerCase()}.png" class="diag-flag">
+                        </div>
+                    </div>
+                </div>
+              </div>
+            `;
+          });
+
+          const section = document.createElement("div");
+          section.className = "pool-container";
+          section.style.cssText = border;
+          section.innerHTML = `<div class="pool-header"><span class="pool-badge">Pool ${p}</span> ${meta.city}</div><div class="teams-grid">${tHtml}</div><div class="vs-label">Matchup UI Testing</div><div class="vs-grid">${sHtml}</div>`;
+          container.appendChild(section);
+        });
+      }
+
+      function updateTeamColor(key, newHex) {
+        currentColors[key] = newHex;
+        const rgb = hexToRgb(newHex);
+        const bestText = getBestTextColor(newHex);
+        const vis = document.getElementById(`visual-${key}`);
+        if (vis) vis.style.backgroundColor = newHex;
+        document.getElementById(`label-hex-${key}`).innerText =
+          newHex.toUpperCase();
+        document.getElementById(
+          `label-rgb-${key}`
+        ).innerText = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+        const aa = document.getElementById(`label-aa-${key}`);
+        aa.innerText = `AA ${bestText.ratio.toFixed(2)}${
+          bestText.ratio < 4.5 ? " ⚠️" : ""
+        }`;
+        aa.className = `gc-aa-info ${bestText.color}`;
+
+        document
+          .querySelectorAll(`.${key}-iso`)
+          .forEach(
+            (el) =>
+              (el.className = `gc-iso team-iso diag-iso ${key}-iso ${bestText.color}`)
+          );
+        document
+          .querySelectorAll(`.team-swatch-${key}`)
+          .forEach((el) => (el.style.backgroundColor = newHex));
+
+        // Update all new UI elements with .side-KEY class
+        document.querySelectorAll(`.side-${key}`).forEach((el) => {
+          el.style.backgroundColor = newHex;
+          el.classList.remove("t-white", "t-dark");
+          el.classList.add(bestText.color);
+        });
+
+        updateSpectrum();
+      }
+
+      function applyAllColors() {
+        Object.keys(currentColors).forEach((k) =>
+          updateTeamColor(k, currentColors[k])
+        );
+      }
+      init();
+
+      // Spectrum Click to Scroll Top
+      document.getElementById("spectrumBar").addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
