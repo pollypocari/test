@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2026 WBC Color Studio (v15 Batch Import)</title>
+    <title>2026 WBC Color Studio (v16 Export JSON)</title>
     <style>
       :root {
         --radius: 8px;
@@ -20,6 +20,7 @@
         --btn-text: #374151;
         --btn-hover: #f3f4f6;
         --code-bg: #f9f9f9;
+        --modal-overlay: rgba(0, 0, 0, 0.5);
       }
 
       /* Dark Mode Overrides */
@@ -34,6 +35,7 @@
         --btn-text: #eeeeee;
         --btn-hover: #444444;
         --code-bg: #333333;
+        --modal-overlay: rgba(0, 0, 0, 0.8);
       }
 
       body {
@@ -85,6 +87,15 @@
       }
       .btn-import:hover {
         background-color: #0056b3;
+      }
+
+      .btn-json {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+      }
+      .btn-json:hover {
+        background-color: #218838;
       }
 
       .btn-download {
@@ -521,6 +532,53 @@
         margin-left: -17px;
       }
 
+      /* MODAL STYLE */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--modal-overlay);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-content {
+        background: var(--bg-card);
+        padding: 30px;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 600px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .modal-header {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--text-main);
+      }
+      .modal-textarea {
+        width: 100%;
+        height: 300px;
+        padding: 15px;
+        font-family: monospace;
+        font-size: 0.85rem;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        background: var(--code-bg);
+        color: var(--text-main);
+        resize: vertical;
+      }
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
       .t-white {
         color: #fff;
       }
@@ -533,10 +591,23 @@
   <body>
     <h1>2026 WBC Palette Studio</h1>
     <p class="intro">
-      <strong>色彩控制台 (v15 Batch Import)：</strong>
-      <br />1. 新增「Batch Import」按鈕，可一次匯入 20 個 Hex 色碼。 <br />2.
-      色碼將依序套用於 Pool A -> B -> C -> D 的球隊。
+      <strong>色彩控制台 (v16 Export JSON)：</strong>
+      <br />1. 新增「Export JSON」按鈕，可匯出最終色碼設定。 <br />2. 包含完整的
+      Batch Import 功能。
     </p>
+
+    <div id="jsonModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">JSON Export</div>
+        <textarea id="jsonOutput" class="modal-textarea" readonly></textarea>
+        <div class="modal-actions">
+          <button class="btn" onclick="closeModal()">Close</button>
+          <button class="btn btn-json" onclick="copyJson()">
+            Copy to Clipboard
+          </button>
+        </div>
+      </div>
+    </div>
 
     <div class="control-zone">
       <div class="spectrum-wrapper">
@@ -551,6 +622,9 @@
           <button class="btn btn-import" onclick="batchImport()">
             Batch Import
           </button>
+          <button class="btn btn-json" onclick="openJsonModal()">
+            Export JSON
+          </button>
           <button class="btn" onclick="resetToDefaults()">
             Reset to Defaults
           </button>
@@ -559,7 +633,7 @@
             Override Memory
           </button>
           <button class="btn btn-download" onclick="exportHTML()">
-            Download New HTML
+            Download HTML
           </button>
         </div>
         <div class="spectrum-container" id="spectrumBar"></div>
@@ -833,6 +907,36 @@
         const next = current === "light" ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("wbc_theme", next);
+      }
+
+      // JSON EXPORT MODAL
+      function openJsonModal() {
+        const orderedColors = {};
+
+        // 修改這裡：
+        TEAM_ORDER.forEach((code) => {
+          // 原本是: orderedColors[code] = currentColors[code];
+          // 改成用中文名稱當 Key:
+          const nameCN = TEAM_INFO[code].name;
+          orderedColors[nameCN] = currentColors[code];
+        });
+
+        const jsonStr = JSON.stringify(orderedColors, null, 4);
+        document.getElementById("jsonOutput").value = jsonStr;
+        document.getElementById("jsonModal").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("jsonModal").style.display = "none";
+      }
+
+      function copyJson() {
+        const copyText = document.getElementById("jsonOutput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+        navigator.clipboard.writeText(copyText.value).then(() => {
+          alert("JSON 已複製到剪貼簿！");
+        });
       }
 
       // BATCH IMPORT
