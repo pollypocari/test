@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="zh-TW" data-theme="light">
   <head>
     <meta charset="UTF-8" />
@@ -638,7 +637,7 @@
     <div id="jsonModal" class="modal-overlay">
       <div class="modal-content">
         <div class="modal-header">JSON Export</div>
-        <textarea id="jsonOutput" class="modal-textarea" readonly></textarea>
+        <textarea id="jsonOutput" class="modal-textarea" readonly=""></textarea>
         <div class="modal-actions">
           <button class="btn" onclick="closeModal()">Close</button>
           <button class="btn btn-json" onclick="copyJson()">
@@ -668,7 +667,161 @@
           </button>
           <button class="btn" onclick="batchImport()">匯入色碼</button>
         </div>
-        <div class="spectrum-container" id="spectrumBar"></div>
+        <div class="spectrum-container" id="spectrumBar">
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(202, 28, 28);
+              color: rgb(255, 255, 255);
+            "
+          >
+            加
+          </div>
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(174, 55, 59);
+              color: rgb(255, 255, 255);
+            "
+          >
+            巴
+          </div>
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(178, 46, 59);
+              color: rgb(255, 255, 255);
+            "
+          >
+            多
+          </div>
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(155, 28, 49);
+              color: rgb(255, 255, 255);
+            "
+          >
+            英
+          </div>
+          <div
+            class="spectrum-segment"
+            style="background-color: rgb(178, 0, 48); color: rgb(255, 255, 255)"
+          >
+            日
+          </div>
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(123, 10, 44);
+              color: rgb(255, 255, 255);
+            "
+          >
+            委
+          </div>
+          <div
+            class="spectrum-segment"
+            style="background-color: rgb(255, 139, 31); color: rgb(17, 17, 17)"
+          >
+            荷
+          </div>
+          <div
+            class="spectrum-segment"
+            style="background-color: rgb(251, 236, 137); color: rgb(17, 17, 17)"
+          >
+            哥
+          </div>
+          <div
+            class="spectrum-segment"
+            style="background-color: rgb(255, 213, 0); color: rgb(17, 17, 17)"
+          >
+            西
+          </div>
+          <div
+            class="spectrum-segment"
+            style="background-color: rgb(0, 122, 75); color: rgb(255, 255, 255)"
+          >
+            澳
+          </div>
+          <div
+            class="spectrum-segment"
+            style="background-color: rgb(0, 64, 40); color: rgb(255, 255, 255)"
+          >
+            墨
+          </div>
+          <div
+            class="spectrum-segment"
+            style="background-color: rgb(134, 205, 244); color: rgb(17, 17, 17)"
+          >
+            尼
+          </div>
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(50, 108, 226);
+              color: rgb(255, 255, 255);
+            "
+          >
+            以
+          </div>
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(49, 97, 185);
+              color: rgb(255, 255, 255);
+            "
+          >
+            義
+          </div>
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(26, 121, 193);
+              color: rgb(255, 255, 255);
+            "
+          >
+            波
+          </div>
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(41, 61, 144);
+              color: rgb(255, 255, 255);
+            "
+          >
+            台
+          </div>
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(36, 82, 127);
+              color: rgb(255, 255, 255);
+            "
+          >
+            捷
+          </div>
+          <div
+            class="spectrum-segment"
+            style="background-color: rgb(0, 42, 143); color: rgb(255, 255, 255)"
+          >
+            古
+          </div>
+          <div
+            class="spectrum-segment"
+            style="
+              background-color: rgb(20, 24, 113);
+              color: rgb(255, 255, 255);
+            "
+          >
+            韓
+          </div>
+          <div
+            class="spectrum-segment"
+            style="background-color: rgb(12, 24, 60); color: rgb(255, 255, 255)"
+          >
+            美
+          </div>
+        </div>
       </div>
       <div class="pool-container" style="border-left: 5px solid #333">
         <div class="pool-header" style="border-color: var(--border-color)">
@@ -677,11 +830,4341 @@
             <span>Global Palette</span>
           </div>
         </div>
-        <div class="global-grid" id="globalGrid"></div>
+        <div class="global-grid" id="globalGrid">
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-CA"
+              style="background-color: rgb(202, 28, 28)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/ca.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso CA-iso t-white"
+                  >CAN</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-CA">AA 5.68</div>
+            </div>
+            <div class="gc-name-cn">加拿大</div>
+            <div class="gc-name-en">Canada</div>
+            <div class="gc-name-reason">楓葉之國 (The Maple Leaf)，鮮紅</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('CA', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-CA">#CA1C1C</span>
+              <span class="gc-code-line" id="label-rgb-CA">202, 28, 28</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-CA"
+                value="#c80a0a"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-CO"
+              style="background-color: rgb(251, 236, 137)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/co.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso CO-iso t-dark"
+                  >COL</span
+                >
+              </div>
+              <div class="gc-aa-info t-dark" id="label-aa-CO">AA 15.70</div>
+            </div>
+            <div class="gc-name-cn">哥倫比亞</div>
+            <div class="gc-name-en">Colombia</div>
+            <div class="gc-name-reason">咖啡農 (Los Cafeteros)，鮮黃</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('CO', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-CO">#FBEC89</span>
+              <span class="gc-code-line" id="label-rgb-CO">251, 236, 137</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-CO"
+                value="#FBEC89"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-CU"
+              style="background-color: rgb(0, 42, 143)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/cu.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso CU-iso t-white"
+                  >CUB</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-CU">AA 12.15</div>
+            </div>
+            <div class="gc-name-cn">古巴</div>
+            <div class="gc-name-en">Cuba</div>
+            <div class="gc-name-reason">紅色機器，紅藍 (海軍藍) 雙棲</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('CU', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-CU">#002A8F</span>
+              <span class="gc-code-line" id="label-rgb-CU">0, 42, 143</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-CU"
+                value="#000066"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-PA"
+              style="background-color: rgb(174, 55, 59)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/pa.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso PA-iso t-white"
+                  >PAN</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-PA">AA 6.16</div>
+            </div>
+            <div class="gc-name-cn">巴拿馬</div>
+            <div class="gc-name-en">Panama</div>
+            <div class="gc-name-reason">運河軍團 (Marea Roja)，紅色</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('PA', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-PA">#AE373B</span>
+              <span class="gc-code-line" id="label-rgb-PA">174, 55, 59</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-PA"
+                value="#c44a4e"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-PR"
+              style="background-color: rgb(26, 121, 193)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/pr.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso PR-iso t-white"
+                  >PUR</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-PR">AA 4.62</div>
+            </div>
+            <div class="gc-name-cn">波多黎各</div>
+            <div class="gc-name-en">Puerto Rico</div>
+            <div class="gc-name-reason">金髮軍團 (Team Rubio)，電光藍</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('PR', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-PR">#1A79C1</span>
+              <span class="gc-code-line" id="label-rgb-PR">26, 121, 193</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-PR"
+                value="#1B72E8"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-BR"
+              style="background-color: rgb(255, 213, 0)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/br.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso BR-iso t-dark"
+                  >BRA</span
+                >
+              </div>
+              <div class="gc-aa-info t-dark" id="label-aa-BR">AA 13.28</div>
+            </div>
+            <div class="gc-name-cn">巴西</div>
+            <div class="gc-name-en">Brazil</div>
+            <div class="gc-name-reason">金絲雀 (Canarinho)，黃綠配</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('BR', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-BR">#FFD500</span>
+              <span class="gc-code-line" id="label-rgb-BR">255, 213, 0</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-BR"
+                value="#FFD500"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-GB"
+              style="background-color: rgb(155, 28, 49)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/gb.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso GB-iso t-white"
+                  >GBR</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-GB">AA 8.06</div>
+            </div>
+            <div class="gc-name-cn">英國</div>
+            <div class="gc-name-en">Great Britain</div>
+            <div class="gc-name-reason">米字旗 (Union Jack)，皇家紅</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('GB', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-GB">#9B1C31</span>
+              <span class="gc-code-line" id="label-rgb-GB">155, 28, 49</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-GB"
+                value="#9b1c31"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-IT"
+              style="background-color: rgb(49, 97, 185)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/it.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso IT-iso t-white"
+                  >ITA</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-IT">AA 5.93</div>
+            </div>
+            <div class="gc-name-cn">義大利</div>
+            <div class="gc-name-en">Italy</div>
+            <div class="gc-name-reason">藍色軍團 (Azzurri)，湛藍</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('IT', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-IT">#3161B9</span>
+              <span class="gc-code-line" id="label-rgb-IT">49, 97, 185</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-IT"
+                value="#3161B9"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-MX"
+              style="background-color: rgb(0, 64, 40)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/mx.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso MX-iso t-white"
+                  >MEX</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-MX">AA 11.90</div>
+            </div>
+            <div class="gc-name-cn">墨西哥</div>
+            <div class="gc-name-en">Mexico</div>
+            <div class="gc-name-reason">三色軍團 (El Tri)，阿茲特克綠</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('MX', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-MX">#004028</span>
+              <span class="gc-code-line" id="label-rgb-MX">0, 64, 40</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-MX"
+                value="#004028"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-US"
+              style="background-color: rgb(12, 24, 60)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/us.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso US-iso t-white"
+                  >USA</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-US">AA 17.33</div>
+            </div>
+            <div class="gc-name-cn">美國</div>
+            <div class="gc-name-en">USA</div>
+            <div class="gc-name-reason">星條旗 (Old Glory)，海軍深藍</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('US', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-US">#0C183C</span>
+              <span class="gc-code-line" id="label-rgb-US">12, 24, 60</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-US"
+                value="#1a1a4d"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-AU"
+              style="background-color: rgb(0, 122, 75)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/au.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso AU-iso t-white"
+                  >AUS</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-AU">AA 5.40</div>
+            </div>
+            <div class="gc-name-cn">澳洲</div>
+            <div class="gc-name-en">Australia</div>
+            <div class="gc-name-reason">國花金合歡，綠金配</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('AU', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-AU">#007A4B</span>
+              <span class="gc-code-line" id="label-rgb-AU">0, 122, 75</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-AU"
+                value="#007A4B"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-TW"
+              style="background-color: rgb(41, 61, 144)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/tw.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso TW-iso t-white"
+                  >TPE</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-TW">AA 9.70</div>
+            </div>
+            <div class="gc-name-cn">中華臺北</div>
+            <div class="gc-name-en">Taiwan</div>
+            <div class="gc-name-reason">中華藍 (CT Blue)，藍白配</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('TW', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-TW">#293D90</span>
+              <span class="gc-code-line" id="label-rgb-TW">41, 61, 144</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-TW"
+                value="#15379E"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-CZ"
+              style="background-color: rgb(36, 82, 127)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/cz.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso CZ-iso t-white"
+                  >CZE</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-CZ">AA 8.11</div>
+            </div>
+            <div class="gc-name-cn">捷克</div>
+            <div class="gc-name-en">Czechia</div>
+            <div class="gc-name-reason">波希米亞獅 (Bohemian Lion)，紅白藍</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('CZ', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-CZ">#24527F</span>
+              <span class="gc-code-line" id="label-rgb-CZ">36, 82, 127</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-CZ"
+                value="#C24E00"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-JP"
+              style="background-color: rgb(178, 0, 48)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/jp.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso JP-iso t-white"
+                  >JPN</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-JP">AA 7.15</div>
+            </div>
+            <div class="gc-name-cn">日本</div>
+            <div class="gc-name-en">Japan</div>
+            <div class="gc-name-reason">侍ジャパン｜武士紺與日之丸紅</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('JP', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-JP">#B20030</span>
+              <span class="gc-code-line" id="label-rgb-JP">178, 0, 48</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-JP"
+                value="#9B0000"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-KR"
+              style="background-color: rgb(20, 24, 113)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/kr.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso KR-iso t-white"
+                  >KOR</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-KR">AA 15.01</div>
+            </div>
+            <div class="gc-name-cn">南韓</div>
+            <div class="gc-name-en">Korea</div>
+            <div class="gc-name-reason">太極旗，陰儀深藍</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('KR', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-KR">#141871</span>
+              <span class="gc-code-line" id="label-rgb-KR">20, 24, 113</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-KR"
+                value="#002C52"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-DO"
+              style="background-color: rgb(178, 46, 59)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/do.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso DO-iso t-white"
+                  >DOM</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-DO">AA 6.27</div>
+            </div>
+            <div class="gc-name-cn">多明尼加</div>
+            <div class="gc-name-en">D.R.</div>
+            <div class="gc-name-reason">香蕉力量 Plátano Power，紅藍白</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('DO', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-DO">#B22E3B</span>
+              <span class="gc-code-line" id="label-rgb-DO">178, 46, 59</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-DO"
+                value="#004D9A"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-IL"
+              style="background-color: rgb(50, 108, 226)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/il.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso IL-iso t-white"
+                  >ISR</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-IL">AA 4.80</div>
+            </div>
+            <div class="gc-name-cn">以色列</div>
+            <div class="gc-name-en">Israel</div>
+            <div class="gc-name-reason">大衛之星 / 六芒星，藍白配</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('IL', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-IL">#326CE2</span>
+              <span class="gc-code-line" id="label-rgb-IL">50, 108, 226</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-IL"
+                value="#D6ECF9"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-NL"
+              style="background-color: rgb(255, 139, 31)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/nl.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso NL-iso t-dark"
+                  >NED</span
+                >
+              </div>
+              <div class="gc-aa-info t-dark" id="label-aa-NL">AA 8.06</div>
+            </div>
+            <div class="gc-name-cn">荷蘭</div>
+            <div class="gc-name-en">Netherlands</div>
+            <div class="gc-name-reason">橘色軍團 (Oranje)，皇室奧蘭治</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('NL', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-NL">#FF8B1F</span>
+              <span class="gc-code-line" id="label-rgb-NL">255, 139, 31</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-NL"
+                value="#ff8e52"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-NI"
+              style="background-color: rgb(134, 205, 244)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/ni.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso NI-iso t-dark"
+                  >NCA</span
+                >
+              </div>
+              <div class="gc-aa-info t-dark" id="label-aa-NI">AA 10.84</div>
+            </div>
+            <div class="gc-name-cn">尼加拉瓜</div>
+            <div class="gc-name-en">Nicaragua</div>
+            <div class="gc-name-reason">藍白軍團 (Azul y Blanco)，淺天藍</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('NI', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-NI">#86CDF4</span>
+              <span class="gc-code-line" id="label-rgb-NI">134, 205, 244</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-NI"
+                value="#86CDF4"
+              />
+            </div>
+          </div>
+          <div class="global-card">
+            <div
+              class="gc-visual-area"
+              id="visual-VE"
+              style="background-color: rgb(123, 10, 44)"
+            >
+              <div class="gc-visual-top">
+                <img
+                  src="https://flagcdn.com/w40/ve.png"
+                  class="gc-flag"
+                /><span class="gc-iso team-iso diag-iso VE-iso t-white"
+                  >VEN</span
+                >
+              </div>
+              <div class="gc-aa-info t-white" id="label-aa-VE">AA 10.93</div>
+            </div>
+            <div class="gc-name-cn">委內瑞拉</div>
+            <div class="gc-name-en">Venezuela</div>
+            <div class="gc-name-reason">紅酒軍團 (La Vinotinto)，酒紅色</div>
+
+            <div
+              class="gc-codes"
+              onclick="copyHex('VE', event)"
+              title="點擊複製 HEX"
+            >
+              <span class="gc-code-line" id="label-hex-VE">#7B0A2C</span>
+              <span class="gc-code-line" id="label-rgb-VE">123, 10, 44</span>
+            </div>
+
+            <div class="gc-btn-wrapper">
+              <div class="gc-btn-style">Adjust Color</div>
+              <input
+                type="color"
+                class="gc-color-input"
+                id="input-VE"
+                value="#ffbb3d"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div id="poolsContainer"></div>
+    <div id="poolsContainer">
+      <div
+        class="pool-container"
+        style="border-left: 5px solid rgb(0, 56, 168)"
+      >
+        <div class="pool-header">
+          <span class="pool-badge">Pool A</span> San Juan, Puerto Rico
+        </div>
+        <div class="teams-grid">
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-CA"
+              style="background-color: rgb(202, 28, 28)"
+            >
+              <img
+                src="https://flagcdn.com/w40/ca.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso CA-iso t-white">CAN</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">加拿大</span
+              ><span class="team-name-en">Canada</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-CO"
+              style="background-color: rgb(251, 236, 137)"
+            >
+              <img
+                src="https://flagcdn.com/w40/co.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso CO-iso t-dark">COL</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">哥倫比亞</span
+              ><span class="team-name-en">Colombia</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-CU"
+              style="background-color: rgb(0, 42, 143)"
+            >
+              <img
+                src="https://flagcdn.com/w40/cu.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso CU-iso t-white">CUB</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">古巴</span
+              ><span class="team-name-en">Cuba</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-PA"
+              style="background-color: rgb(174, 55, 59)"
+            >
+              <img
+                src="https://flagcdn.com/w40/pa.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso PA-iso t-white">PAN</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">巴拿馬</span
+              ><span class="team-name-en">Panama</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-PR"
+              style="background-color: rgb(26, 121, 193)"
+            >
+              <img
+                src="https://flagcdn.com/w40/pr.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso PR-iso t-white">PUR</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">波多黎各</span
+              ><span class="team-name-en">Puerto Rico</span>
+            </div>
+          </div>
+        </div>
+        <div class="vs-label">Matchup UI Testing</div>
+        <div class="vs-grid">
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/6 12:00</span><span>古巴 vs 巴拿馬</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-CU t-white"
+                style="background-color: rgb(0, 42, 143)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">古巴</div>
+              </div>
+              <div
+                class="pitcher-side side-PA t-white"
+                style="background-color: rgb(174, 55, 59)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">巴拿馬</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-CU t-white"
+                style="background-color: rgb(0, 42, 143)"
+              >
+                古巴
+              </div>
+              <div class="tab-side tab-inactive">巴拿馬</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">古巴</div>
+              <div
+                class="tab-side tab-active side-PA t-white"
+                style="background-color: rgb(174, 55, 59)"
+              >
+                巴拿馬
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CU t-white"
+                  style="background-color: rgb(0, 42, 143)"
+                >
+                  <img src="https://flagcdn.com/w40/cu.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-PA t-white"
+                  style="background-color: rgb(174, 55, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/pa.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CU t-white"
+                  style="background-color: rgb(0, 42, 143)"
+                >
+                  <img src="https://flagcdn.com/w40/cu.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-PA t-white"
+                  style="background-color: rgb(174, 55, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/pa.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/6 19:00</span><span>波多黎各 vs 哥倫比亞</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-PR t-white"
+                style="background-color: rgb(26, 121, 193)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">波多黎各</div>
+              </div>
+              <div
+                class="pitcher-side side-CO t-dark"
+                style="background-color: rgb(251, 236, 137)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">哥倫比亞</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-PR t-white"
+                style="background-color: rgb(26, 121, 193)"
+              >
+                波多黎各
+              </div>
+              <div class="tab-side tab-inactive">哥倫比亞</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">波多黎各</div>
+              <div
+                class="tab-side tab-active side-CO t-dark"
+                style="background-color: rgb(251, 236, 137)"
+              >
+                哥倫比亞
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-PR t-white"
+                  style="background-color: rgb(26, 121, 193)"
+                >
+                  <img src="https://flagcdn.com/w40/pr.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CO t-dark"
+                  style="background-color: rgb(251, 236, 137)"
+                >
+                  <img src="https://flagcdn.com/w40/co.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-PR t-white"
+                  style="background-color: rgb(26, 121, 193)"
+                >
+                  <img src="https://flagcdn.com/w40/pr.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CO t-dark"
+                  style="background-color: rgb(251, 236, 137)"
+                >
+                  <img src="https://flagcdn.com/w40/co.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/7 12:00</span><span>哥倫比亞 vs 加拿大</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-CO t-dark"
+                style="background-color: rgb(251, 236, 137)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">哥倫比亞</div>
+              </div>
+              <div
+                class="pitcher-side side-CA t-white"
+                style="background-color: rgb(202, 28, 28)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">加拿大</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-CO t-dark"
+                style="background-color: rgb(251, 236, 137)"
+              >
+                哥倫比亞
+              </div>
+              <div class="tab-side tab-inactive">加拿大</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">哥倫比亞</div>
+              <div
+                class="tab-side tab-active side-CA t-white"
+                style="background-color: rgb(202, 28, 28)"
+              >
+                加拿大
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CO t-dark"
+                  style="background-color: rgb(251, 236, 137)"
+                >
+                  <img src="https://flagcdn.com/w40/co.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CA t-white"
+                  style="background-color: rgb(202, 28, 28)"
+                >
+                  <img src="https://flagcdn.com/w40/ca.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CO t-dark"
+                  style="background-color: rgb(251, 236, 137)"
+                >
+                  <img src="https://flagcdn.com/w40/co.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CA t-white"
+                  style="background-color: rgb(202, 28, 28)"
+                >
+                  <img src="https://flagcdn.com/w40/ca.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/7 19:00</span><span>巴拿馬 vs 波多黎各</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-PA t-white"
+                style="background-color: rgb(174, 55, 59)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">巴拿馬</div>
+              </div>
+              <div
+                class="pitcher-side side-PR t-white"
+                style="background-color: rgb(26, 121, 193)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">波多黎各</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-PA t-white"
+                style="background-color: rgb(174, 55, 59)"
+              >
+                巴拿馬
+              </div>
+              <div class="tab-side tab-inactive">波多黎各</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">巴拿馬</div>
+              <div
+                class="tab-side tab-active side-PR t-white"
+                style="background-color: rgb(26, 121, 193)"
+              >
+                波多黎各
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-PA t-white"
+                  style="background-color: rgb(174, 55, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/pa.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-PR t-white"
+                  style="background-color: rgb(26, 121, 193)"
+                >
+                  <img src="https://flagcdn.com/w40/pr.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-PA t-white"
+                  style="background-color: rgb(174, 55, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/pa.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-PR t-white"
+                  style="background-color: rgb(26, 121, 193)"
+                >
+                  <img src="https://flagcdn.com/w40/pr.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/8 12:00</span><span>哥倫比亞 vs 古巴</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-CO t-dark"
+                style="background-color: rgb(251, 236, 137)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">哥倫比亞</div>
+              </div>
+              <div
+                class="pitcher-side side-CU t-white"
+                style="background-color: rgb(0, 42, 143)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">古巴</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-CO t-dark"
+                style="background-color: rgb(251, 236, 137)"
+              >
+                哥倫比亞
+              </div>
+              <div class="tab-side tab-inactive">古巴</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">哥倫比亞</div>
+              <div
+                class="tab-side tab-active side-CU t-white"
+                style="background-color: rgb(0, 42, 143)"
+              >
+                古巴
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CO t-dark"
+                  style="background-color: rgb(251, 236, 137)"
+                >
+                  <img src="https://flagcdn.com/w40/co.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CU t-white"
+                  style="background-color: rgb(0, 42, 143)"
+                >
+                  <img src="https://flagcdn.com/w40/cu.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CO t-dark"
+                  style="background-color: rgb(251, 236, 137)"
+                >
+                  <img src="https://flagcdn.com/w40/co.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CU t-white"
+                  style="background-color: rgb(0, 42, 143)"
+                >
+                  <img src="https://flagcdn.com/w40/cu.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/8 19:00</span><span>巴拿馬 vs 加拿大</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-PA t-white"
+                style="background-color: rgb(174, 55, 59)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">巴拿馬</div>
+              </div>
+              <div
+                class="pitcher-side side-CA t-white"
+                style="background-color: rgb(202, 28, 28)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">加拿大</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-PA t-white"
+                style="background-color: rgb(174, 55, 59)"
+              >
+                巴拿馬
+              </div>
+              <div class="tab-side tab-inactive">加拿大</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">巴拿馬</div>
+              <div
+                class="tab-side tab-active side-CA t-white"
+                style="background-color: rgb(202, 28, 28)"
+              >
+                加拿大
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-PA t-white"
+                  style="background-color: rgb(174, 55, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/pa.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CA t-white"
+                  style="background-color: rgb(202, 28, 28)"
+                >
+                  <img src="https://flagcdn.com/w40/ca.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-PA t-white"
+                  style="background-color: rgb(174, 55, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/pa.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CA t-white"
+                  style="background-color: rgb(202, 28, 28)"
+                >
+                  <img src="https://flagcdn.com/w40/ca.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/9 12:00</span><span>哥倫比亞 vs 巴拿馬</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-CO t-dark"
+                style="background-color: rgb(251, 236, 137)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">哥倫比亞</div>
+              </div>
+              <div
+                class="pitcher-side side-PA t-white"
+                style="background-color: rgb(174, 55, 59)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">巴拿馬</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-CO t-dark"
+                style="background-color: rgb(251, 236, 137)"
+              >
+                哥倫比亞
+              </div>
+              <div class="tab-side tab-inactive">巴拿馬</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">哥倫比亞</div>
+              <div
+                class="tab-side tab-active side-PA t-white"
+                style="background-color: rgb(174, 55, 59)"
+              >
+                巴拿馬
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CO t-dark"
+                  style="background-color: rgb(251, 236, 137)"
+                >
+                  <img src="https://flagcdn.com/w40/co.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-PA t-white"
+                  style="background-color: rgb(174, 55, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/pa.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CO t-dark"
+                  style="background-color: rgb(251, 236, 137)"
+                >
+                  <img src="https://flagcdn.com/w40/co.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-PA t-white"
+                  style="background-color: rgb(174, 55, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/pa.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/9 19:00</span><span>古巴 vs 波多黎各</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-CU t-white"
+                style="background-color: rgb(0, 42, 143)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">古巴</div>
+              </div>
+              <div
+                class="pitcher-side side-PR t-white"
+                style="background-color: rgb(26, 121, 193)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">波多黎各</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-CU t-white"
+                style="background-color: rgb(0, 42, 143)"
+              >
+                古巴
+              </div>
+              <div class="tab-side tab-inactive">波多黎各</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">古巴</div>
+              <div
+                class="tab-side tab-active side-PR t-white"
+                style="background-color: rgb(26, 121, 193)"
+              >
+                波多黎各
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CU t-white"
+                  style="background-color: rgb(0, 42, 143)"
+                >
+                  <img src="https://flagcdn.com/w40/cu.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-PR t-white"
+                  style="background-color: rgb(26, 121, 193)"
+                >
+                  <img src="https://flagcdn.com/w40/pr.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CU t-white"
+                  style="background-color: rgb(0, 42, 143)"
+                >
+                  <img src="https://flagcdn.com/w40/cu.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-PR t-white"
+                  style="background-color: rgb(26, 121, 193)"
+                >
+                  <img src="https://flagcdn.com/w40/pr.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/10 19:00</span><span>加拿大 vs 波多黎各</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-CA t-white"
+                style="background-color: rgb(202, 28, 28)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">加拿大</div>
+              </div>
+              <div
+                class="pitcher-side side-PR t-white"
+                style="background-color: rgb(26, 121, 193)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">波多黎各</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-CA t-white"
+                style="background-color: rgb(202, 28, 28)"
+              >
+                加拿大
+              </div>
+              <div class="tab-side tab-inactive">波多黎各</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">加拿大</div>
+              <div
+                class="tab-side tab-active side-PR t-white"
+                style="background-color: rgb(26, 121, 193)"
+              >
+                波多黎各
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CA t-white"
+                  style="background-color: rgb(202, 28, 28)"
+                >
+                  <img src="https://flagcdn.com/w40/ca.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-PR t-white"
+                  style="background-color: rgb(26, 121, 193)"
+                >
+                  <img src="https://flagcdn.com/w40/pr.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CA t-white"
+                  style="background-color: rgb(202, 28, 28)"
+                >
+                  <img src="https://flagcdn.com/w40/ca.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-PR t-white"
+                  style="background-color: rgb(26, 121, 193)"
+                >
+                  <img src="https://flagcdn.com/w40/pr.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/11 15:00</span><span>加拿大 vs 古巴</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-CA t-white"
+                style="background-color: rgb(202, 28, 28)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">加拿大</div>
+              </div>
+              <div
+                class="pitcher-side side-CU t-white"
+                style="background-color: rgb(0, 42, 143)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">古巴</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-CA t-white"
+                style="background-color: rgb(202, 28, 28)"
+              >
+                加拿大
+              </div>
+              <div class="tab-side tab-inactive">古巴</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">加拿大</div>
+              <div
+                class="tab-side tab-active side-CU t-white"
+                style="background-color: rgb(0, 42, 143)"
+              >
+                古巴
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CA t-white"
+                  style="background-color: rgb(202, 28, 28)"
+                >
+                  <img src="https://flagcdn.com/w40/ca.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CU t-white"
+                  style="background-color: rgb(0, 42, 143)"
+                >
+                  <img src="https://flagcdn.com/w40/cu.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CA t-white"
+                  style="background-color: rgb(202, 28, 28)"
+                >
+                  <img src="https://flagcdn.com/w40/ca.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CU t-white"
+                  style="background-color: rgb(0, 42, 143)"
+                >
+                  <img src="https://flagcdn.com/w40/cu.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pool-container"
+        style="border-left: 5px solid rgb(51, 51, 51)"
+      >
+        <div class="pool-header">
+          <span class="pool-badge">Pool B</span> Houston, USA
+        </div>
+        <div class="teams-grid">
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-BR"
+              style="background-color: rgb(255, 213, 0)"
+            >
+              <img
+                src="https://flagcdn.com/w40/br.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso BR-iso t-dark">BRA</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">巴西</span
+              ><span class="team-name-en">Brazil</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-GB"
+              style="background-color: rgb(155, 28, 49)"
+            >
+              <img
+                src="https://flagcdn.com/w40/gb.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso GB-iso t-white">GBR</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">英國</span
+              ><span class="team-name-en">Great Britain</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-IT"
+              style="background-color: rgb(49, 97, 185)"
+            >
+              <img
+                src="https://flagcdn.com/w40/it.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso IT-iso t-white">ITA</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">義大利</span
+              ><span class="team-name-en">Italy</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-MX"
+              style="background-color: rgb(0, 64, 40)"
+            >
+              <img
+                src="https://flagcdn.com/w40/mx.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso MX-iso t-white">MEX</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">墨西哥</span
+              ><span class="team-name-en">Mexico</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-US"
+              style="background-color: rgb(12, 24, 60)"
+            >
+              <img
+                src="https://flagcdn.com/w40/us.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso US-iso t-white">USA</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">美國</span
+              ><span class="team-name-en">USA</span>
+            </div>
+          </div>
+        </div>
+        <div class="vs-label">Matchup UI Testing</div>
+        <div class="vs-grid">
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/6 12:00</span><span>墨西哥 vs 英國</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-MX t-white"
+                style="background-color: rgb(0, 64, 40)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">墨西哥</div>
+              </div>
+              <div
+                class="pitcher-side side-GB t-white"
+                style="background-color: rgb(155, 28, 49)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">英國</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-MX t-white"
+                style="background-color: rgb(0, 64, 40)"
+              >
+                墨西哥
+              </div>
+              <div class="tab-side tab-inactive">英國</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">墨西哥</div>
+              <div
+                class="tab-side tab-active side-GB t-white"
+                style="background-color: rgb(155, 28, 49)"
+              >
+                英國
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-MX t-white"
+                  style="background-color: rgb(0, 64, 40)"
+                >
+                  <img src="https://flagcdn.com/w40/mx.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-GB t-white"
+                  style="background-color: rgb(155, 28, 49)"
+                >
+                  <img src="https://flagcdn.com/w40/gb.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-MX t-white"
+                  style="background-color: rgb(0, 64, 40)"
+                >
+                  <img src="https://flagcdn.com/w40/mx.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-GB t-white"
+                  style="background-color: rgb(155, 28, 49)"
+                >
+                  <img src="https://flagcdn.com/w40/gb.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/6 19:00</span><span>美國 vs 巴西</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-US t-white"
+                style="background-color: rgb(12, 24, 60)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">美國</div>
+              </div>
+              <div
+                class="pitcher-side side-BR t-dark"
+                style="background-color: rgb(255, 213, 0)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">巴西</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-US t-white"
+                style="background-color: rgb(12, 24, 60)"
+              >
+                美國
+              </div>
+              <div class="tab-side tab-inactive">巴西</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">美國</div>
+              <div
+                class="tab-side tab-active side-BR t-dark"
+                style="background-color: rgb(255, 213, 0)"
+              >
+                巴西
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-US t-white"
+                  style="background-color: rgb(12, 24, 60)"
+                >
+                  <img src="https://flagcdn.com/w40/us.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-BR t-dark"
+                  style="background-color: rgb(255, 213, 0)"
+                >
+                  <img src="https://flagcdn.com/w40/br.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-US t-white"
+                  style="background-color: rgb(12, 24, 60)"
+                >
+                  <img src="https://flagcdn.com/w40/us.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-BR t-dark"
+                  style="background-color: rgb(255, 213, 0)"
+                >
+                  <img src="https://flagcdn.com/w40/br.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/7 12:00</span><span>巴西 vs 義大利</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-BR t-dark"
+                style="background-color: rgb(255, 213, 0)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">巴西</div>
+              </div>
+              <div
+                class="pitcher-side side-IT t-white"
+                style="background-color: rgb(49, 97, 185)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">義大利</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-BR t-dark"
+                style="background-color: rgb(255, 213, 0)"
+              >
+                巴西
+              </div>
+              <div class="tab-side tab-inactive">義大利</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">巴西</div>
+              <div
+                class="tab-side tab-active side-IT t-white"
+                style="background-color: rgb(49, 97, 185)"
+              >
+                義大利
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-BR t-dark"
+                  style="background-color: rgb(255, 213, 0)"
+                >
+                  <img src="https://flagcdn.com/w40/br.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-IT t-white"
+                  style="background-color: rgb(49, 97, 185)"
+                >
+                  <img src="https://flagcdn.com/w40/it.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-BR t-dark"
+                  style="background-color: rgb(255, 213, 0)"
+                >
+                  <img src="https://flagcdn.com/w40/br.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-IT t-white"
+                  style="background-color: rgb(49, 97, 185)"
+                >
+                  <img src="https://flagcdn.com/w40/it.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/7 19:00</span><span>英國 vs 美國</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-GB t-white"
+                style="background-color: rgb(155, 28, 49)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">英國</div>
+              </div>
+              <div
+                class="pitcher-side side-US t-white"
+                style="background-color: rgb(12, 24, 60)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">美國</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-GB t-white"
+                style="background-color: rgb(155, 28, 49)"
+              >
+                英國
+              </div>
+              <div class="tab-side tab-inactive">美國</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">英國</div>
+              <div
+                class="tab-side tab-active side-US t-white"
+                style="background-color: rgb(12, 24, 60)"
+              >
+                美國
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-GB t-white"
+                  style="background-color: rgb(155, 28, 49)"
+                >
+                  <img src="https://flagcdn.com/w40/gb.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-US t-white"
+                  style="background-color: rgb(12, 24, 60)"
+                >
+                  <img src="https://flagcdn.com/w40/us.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-GB t-white"
+                  style="background-color: rgb(155, 28, 49)"
+                >
+                  <img src="https://flagcdn.com/w40/gb.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-US t-white"
+                  style="background-color: rgb(12, 24, 60)"
+                >
+                  <img src="https://flagcdn.com/w40/us.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/8 12:00</span><span>英國 vs 義大利</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-GB t-white"
+                style="background-color: rgb(155, 28, 49)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">英國</div>
+              </div>
+              <div
+                class="pitcher-side side-IT t-white"
+                style="background-color: rgb(49, 97, 185)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">義大利</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-GB t-white"
+                style="background-color: rgb(155, 28, 49)"
+              >
+                英國
+              </div>
+              <div class="tab-side tab-inactive">義大利</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">英國</div>
+              <div
+                class="tab-side tab-active side-IT t-white"
+                style="background-color: rgb(49, 97, 185)"
+              >
+                義大利
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-GB t-white"
+                  style="background-color: rgb(155, 28, 49)"
+                >
+                  <img src="https://flagcdn.com/w40/gb.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-IT t-white"
+                  style="background-color: rgb(49, 97, 185)"
+                >
+                  <img src="https://flagcdn.com/w40/it.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-GB t-white"
+                  style="background-color: rgb(155, 28, 49)"
+                >
+                  <img src="https://flagcdn.com/w40/gb.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-IT t-white"
+                  style="background-color: rgb(49, 97, 185)"
+                >
+                  <img src="https://flagcdn.com/w40/it.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/8 19:00</span><span>巴西 vs 墨西哥</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-BR t-dark"
+                style="background-color: rgb(255, 213, 0)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">巴西</div>
+              </div>
+              <div
+                class="pitcher-side side-MX t-white"
+                style="background-color: rgb(0, 64, 40)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">墨西哥</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-BR t-dark"
+                style="background-color: rgb(255, 213, 0)"
+              >
+                巴西
+              </div>
+              <div class="tab-side tab-inactive">墨西哥</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">巴西</div>
+              <div
+                class="tab-side tab-active side-MX t-white"
+                style="background-color: rgb(0, 64, 40)"
+              >
+                墨西哥
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-BR t-dark"
+                  style="background-color: rgb(255, 213, 0)"
+                >
+                  <img src="https://flagcdn.com/w40/br.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-MX t-white"
+                  style="background-color: rgb(0, 64, 40)"
+                >
+                  <img src="https://flagcdn.com/w40/mx.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-BR t-dark"
+                  style="background-color: rgb(255, 213, 0)"
+                >
+                  <img src="https://flagcdn.com/w40/br.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-MX t-white"
+                  style="background-color: rgb(0, 64, 40)"
+                >
+                  <img src="https://flagcdn.com/w40/mx.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/9 12:00</span><span>巴西 vs 英國</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-BR t-dark"
+                style="background-color: rgb(255, 213, 0)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">巴西</div>
+              </div>
+              <div
+                class="pitcher-side side-GB t-white"
+                style="background-color: rgb(155, 28, 49)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">英國</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-BR t-dark"
+                style="background-color: rgb(255, 213, 0)"
+              >
+                巴西
+              </div>
+              <div class="tab-side tab-inactive">英國</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">巴西</div>
+              <div
+                class="tab-side tab-active side-GB t-white"
+                style="background-color: rgb(155, 28, 49)"
+              >
+                英國
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-BR t-dark"
+                  style="background-color: rgb(255, 213, 0)"
+                >
+                  <img src="https://flagcdn.com/w40/br.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-GB t-white"
+                  style="background-color: rgb(155, 28, 49)"
+                >
+                  <img src="https://flagcdn.com/w40/gb.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-BR t-dark"
+                  style="background-color: rgb(255, 213, 0)"
+                >
+                  <img src="https://flagcdn.com/w40/br.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-GB t-white"
+                  style="background-color: rgb(155, 28, 49)"
+                >
+                  <img src="https://flagcdn.com/w40/gb.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/9 19:00</span><span>墨西哥 vs 美國</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-MX t-white"
+                style="background-color: rgb(0, 64, 40)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">墨西哥</div>
+              </div>
+              <div
+                class="pitcher-side side-US t-white"
+                style="background-color: rgb(12, 24, 60)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">美國</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-MX t-white"
+                style="background-color: rgb(0, 64, 40)"
+              >
+                墨西哥
+              </div>
+              <div class="tab-side tab-inactive">美國</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">墨西哥</div>
+              <div
+                class="tab-side tab-active side-US t-white"
+                style="background-color: rgb(12, 24, 60)"
+              >
+                美國
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-MX t-white"
+                  style="background-color: rgb(0, 64, 40)"
+                >
+                  <img src="https://flagcdn.com/w40/mx.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-US t-white"
+                  style="background-color: rgb(12, 24, 60)"
+                >
+                  <img src="https://flagcdn.com/w40/us.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-MX t-white"
+                  style="background-color: rgb(0, 64, 40)"
+                >
+                  <img src="https://flagcdn.com/w40/mx.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-US t-white"
+                  style="background-color: rgb(12, 24, 60)"
+                >
+                  <img src="https://flagcdn.com/w40/us.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/10 20:00</span><span>義大利 vs 美國</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-IT t-white"
+                style="background-color: rgb(49, 97, 185)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">義大利</div>
+              </div>
+              <div
+                class="pitcher-side side-US t-white"
+                style="background-color: rgb(12, 24, 60)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">美國</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-IT t-white"
+                style="background-color: rgb(49, 97, 185)"
+              >
+                義大利
+              </div>
+              <div class="tab-side tab-inactive">美國</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">義大利</div>
+              <div
+                class="tab-side tab-active side-US t-white"
+                style="background-color: rgb(12, 24, 60)"
+              >
+                美國
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-IT t-white"
+                  style="background-color: rgb(49, 97, 185)"
+                >
+                  <img src="https://flagcdn.com/w40/it.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-US t-white"
+                  style="background-color: rgb(12, 24, 60)"
+                >
+                  <img src="https://flagcdn.com/w40/us.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-IT t-white"
+                  style="background-color: rgb(49, 97, 185)"
+                >
+                  <img src="https://flagcdn.com/w40/it.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-US t-white"
+                  style="background-color: rgb(12, 24, 60)"
+                >
+                  <img src="https://flagcdn.com/w40/us.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/11 18:00</span><span>義大利 vs 墨西哥</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-IT t-white"
+                style="background-color: rgb(49, 97, 185)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">義大利</div>
+              </div>
+              <div
+                class="pitcher-side side-MX t-white"
+                style="background-color: rgb(0, 64, 40)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">墨西哥</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-IT t-white"
+                style="background-color: rgb(49, 97, 185)"
+              >
+                義大利
+              </div>
+              <div class="tab-side tab-inactive">墨西哥</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">義大利</div>
+              <div
+                class="tab-side tab-active side-MX t-white"
+                style="background-color: rgb(0, 64, 40)"
+              >
+                墨西哥
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-IT t-white"
+                  style="background-color: rgb(49, 97, 185)"
+                >
+                  <img src="https://flagcdn.com/w40/it.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-MX t-white"
+                  style="background-color: rgb(0, 64, 40)"
+                >
+                  <img src="https://flagcdn.com/w40/mx.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-IT t-white"
+                  style="background-color: rgb(49, 97, 185)"
+                >
+                  <img src="https://flagcdn.com/w40/it.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-MX t-white"
+                  style="background-color: rgb(0, 64, 40)"
+                >
+                  <img src="https://flagcdn.com/w40/mx.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pool-container"
+        style="border-left: 5px solid rgb(0, 153, 204)"
+      >
+        <div class="pool-header">
+          <span class="pool-badge">Pool C</span> Tokyo, Japan
+        </div>
+        <div class="teams-grid">
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-AU"
+              style="background-color: rgb(0, 122, 75)"
+            >
+              <img
+                src="https://flagcdn.com/w40/au.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso AU-iso t-white">AUS</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">澳洲</span
+              ><span class="team-name-en">Australia</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-TW"
+              style="background-color: rgb(41, 61, 144)"
+            >
+              <img
+                src="https://flagcdn.com/w40/tw.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso TW-iso t-white">TPE</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">中華臺北</span
+              ><span class="team-name-en">Taiwan</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-CZ"
+              style="background-color: rgb(36, 82, 127)"
+            >
+              <img
+                src="https://flagcdn.com/w40/cz.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso CZ-iso t-white">CZE</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">捷克</span
+              ><span class="team-name-en">Czechia</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-JP"
+              style="background-color: rgb(178, 0, 48)"
+            >
+              <img
+                src="https://flagcdn.com/w40/jp.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso JP-iso t-white">JPN</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">日本</span
+              ><span class="team-name-en">Japan</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-KR"
+              style="background-color: rgb(20, 24, 113)"
+            >
+              <img
+                src="https://flagcdn.com/w40/kr.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso KR-iso t-white">KOR</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">南韓</span
+              ><span class="team-name-en">Korea</span>
+            </div>
+          </div>
+        </div>
+        <div class="vs-label">Matchup UI Testing</div>
+        <div class="vs-grid">
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/5 12:00</span><span>中華臺北 vs 澳洲</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-TW t-white"
+                style="background-color: rgb(41, 61, 144)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">中華臺北</div>
+              </div>
+              <div
+                class="pitcher-side side-AU t-white"
+                style="background-color: rgb(0, 122, 75)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">澳洲</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-TW t-white"
+                style="background-color: rgb(41, 61, 144)"
+              >
+                中華臺北
+              </div>
+              <div class="tab-side tab-inactive">澳洲</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">中華臺北</div>
+              <div
+                class="tab-side tab-active side-AU t-white"
+                style="background-color: rgb(0, 122, 75)"
+              >
+                澳洲
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-TW t-white"
+                  style="background-color: rgb(41, 61, 144)"
+                >
+                  <img src="https://flagcdn.com/w40/tw.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-AU t-white"
+                  style="background-color: rgb(0, 122, 75)"
+                >
+                  <img src="https://flagcdn.com/w40/au.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-TW t-white"
+                  style="background-color: rgb(41, 61, 144)"
+                >
+                  <img src="https://flagcdn.com/w40/tw.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-AU t-white"
+                  style="background-color: rgb(0, 122, 75)"
+                >
+                  <img src="https://flagcdn.com/w40/au.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/5 19:00</span><span>捷克 vs 南韓</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-CZ t-white"
+                style="background-color: rgb(36, 82, 127)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">捷克</div>
+              </div>
+              <div
+                class="pitcher-side side-KR t-white"
+                style="background-color: rgb(20, 24, 113)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">南韓</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-CZ t-white"
+                style="background-color: rgb(36, 82, 127)"
+              >
+                捷克
+              </div>
+              <div class="tab-side tab-inactive">南韓</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">捷克</div>
+              <div
+                class="tab-side tab-active side-KR t-white"
+                style="background-color: rgb(20, 24, 113)"
+              >
+                南韓
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CZ t-white"
+                  style="background-color: rgb(36, 82, 127)"
+                >
+                  <img src="https://flagcdn.com/w40/cz.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-KR t-white"
+                  style="background-color: rgb(20, 24, 113)"
+                >
+                  <img src="https://flagcdn.com/w40/kr.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CZ t-white"
+                  style="background-color: rgb(36, 82, 127)"
+                >
+                  <img src="https://flagcdn.com/w40/cz.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-KR t-white"
+                  style="background-color: rgb(20, 24, 113)"
+                >
+                  <img src="https://flagcdn.com/w40/kr.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/6 12:00</span><span>澳洲 vs 捷克</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-AU t-white"
+                style="background-color: rgb(0, 122, 75)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">澳洲</div>
+              </div>
+              <div
+                class="pitcher-side side-CZ t-white"
+                style="background-color: rgb(36, 82, 127)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">捷克</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-AU t-white"
+                style="background-color: rgb(0, 122, 75)"
+              >
+                澳洲
+              </div>
+              <div class="tab-side tab-inactive">捷克</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">澳洲</div>
+              <div
+                class="tab-side tab-active side-CZ t-white"
+                style="background-color: rgb(36, 82, 127)"
+              >
+                捷克
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-AU t-white"
+                  style="background-color: rgb(0, 122, 75)"
+                >
+                  <img src="https://flagcdn.com/w40/au.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CZ t-white"
+                  style="background-color: rgb(36, 82, 127)"
+                >
+                  <img src="https://flagcdn.com/w40/cz.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-AU t-white"
+                  style="background-color: rgb(0, 122, 75)"
+                >
+                  <img src="https://flagcdn.com/w40/au.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CZ t-white"
+                  style="background-color: rgb(36, 82, 127)"
+                >
+                  <img src="https://flagcdn.com/w40/cz.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/6 19:00</span><span>日本 vs 中華臺北</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-JP t-white"
+                style="background-color: rgb(178, 0, 48)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">日本</div>
+              </div>
+              <div
+                class="pitcher-side side-TW t-white"
+                style="background-color: rgb(41, 61, 144)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">中華臺北</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-JP t-white"
+                style="background-color: rgb(178, 0, 48)"
+              >
+                日本
+              </div>
+              <div class="tab-side tab-inactive">中華臺北</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">日本</div>
+              <div
+                class="tab-side tab-active side-TW t-white"
+                style="background-color: rgb(41, 61, 144)"
+              >
+                中華臺北
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-JP t-white"
+                  style="background-color: rgb(178, 0, 48)"
+                >
+                  <img src="https://flagcdn.com/w40/jp.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-TW t-white"
+                  style="background-color: rgb(41, 61, 144)"
+                >
+                  <img src="https://flagcdn.com/w40/tw.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-JP t-white"
+                  style="background-color: rgb(178, 0, 48)"
+                >
+                  <img src="https://flagcdn.com/w40/jp.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-TW t-white"
+                  style="background-color: rgb(41, 61, 144)"
+                >
+                  <img src="https://flagcdn.com/w40/tw.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/7 12:00</span><span>中華臺北 vs 捷克</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-TW t-white"
+                style="background-color: rgb(41, 61, 144)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">中華臺北</div>
+              </div>
+              <div
+                class="pitcher-side side-CZ t-white"
+                style="background-color: rgb(36, 82, 127)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">捷克</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-TW t-white"
+                style="background-color: rgb(41, 61, 144)"
+              >
+                中華臺北
+              </div>
+              <div class="tab-side tab-inactive">捷克</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">中華臺北</div>
+              <div
+                class="tab-side tab-active side-CZ t-white"
+                style="background-color: rgb(36, 82, 127)"
+              >
+                捷克
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-TW t-white"
+                  style="background-color: rgb(41, 61, 144)"
+                >
+                  <img src="https://flagcdn.com/w40/tw.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CZ t-white"
+                  style="background-color: rgb(36, 82, 127)"
+                >
+                  <img src="https://flagcdn.com/w40/cz.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-TW t-white"
+                  style="background-color: rgb(41, 61, 144)"
+                >
+                  <img src="https://flagcdn.com/w40/tw.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-CZ t-white"
+                  style="background-color: rgb(36, 82, 127)"
+                >
+                  <img src="https://flagcdn.com/w40/cz.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/7 19:00</span><span>南韓 vs 日本</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-KR t-white"
+                style="background-color: rgb(20, 24, 113)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">南韓</div>
+              </div>
+              <div
+                class="pitcher-side side-JP t-white"
+                style="background-color: rgb(178, 0, 48)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">日本</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-KR t-white"
+                style="background-color: rgb(20, 24, 113)"
+              >
+                南韓
+              </div>
+              <div class="tab-side tab-inactive">日本</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">南韓</div>
+              <div
+                class="tab-side tab-active side-JP t-white"
+                style="background-color: rgb(178, 0, 48)"
+              >
+                日本
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-KR t-white"
+                  style="background-color: rgb(20, 24, 113)"
+                >
+                  <img src="https://flagcdn.com/w40/kr.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-JP t-white"
+                  style="background-color: rgb(178, 0, 48)"
+                >
+                  <img src="https://flagcdn.com/w40/jp.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-KR t-white"
+                  style="background-color: rgb(20, 24, 113)"
+                >
+                  <img src="https://flagcdn.com/w40/kr.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-JP t-white"
+                  style="background-color: rgb(178, 0, 48)"
+                >
+                  <img src="https://flagcdn.com/w40/jp.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/8 12:00</span><span>中華臺北 vs 南韓</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-TW t-white"
+                style="background-color: rgb(41, 61, 144)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">中華臺北</div>
+              </div>
+              <div
+                class="pitcher-side side-KR t-white"
+                style="background-color: rgb(20, 24, 113)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">南韓</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-TW t-white"
+                style="background-color: rgb(41, 61, 144)"
+              >
+                中華臺北
+              </div>
+              <div class="tab-side tab-inactive">南韓</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">中華臺北</div>
+              <div
+                class="tab-side tab-active side-KR t-white"
+                style="background-color: rgb(20, 24, 113)"
+              >
+                南韓
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-TW t-white"
+                  style="background-color: rgb(41, 61, 144)"
+                >
+                  <img src="https://flagcdn.com/w40/tw.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-KR t-white"
+                  style="background-color: rgb(20, 24, 113)"
+                >
+                  <img src="https://flagcdn.com/w40/kr.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-TW t-white"
+                  style="background-color: rgb(41, 61, 144)"
+                >
+                  <img src="https://flagcdn.com/w40/tw.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-KR t-white"
+                  style="background-color: rgb(20, 24, 113)"
+                >
+                  <img src="https://flagcdn.com/w40/kr.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/8 19:00</span><span>澳洲 vs 日本</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-AU t-white"
+                style="background-color: rgb(0, 122, 75)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">澳洲</div>
+              </div>
+              <div
+                class="pitcher-side side-JP t-white"
+                style="background-color: rgb(178, 0, 48)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">日本</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-AU t-white"
+                style="background-color: rgb(0, 122, 75)"
+              >
+                澳洲
+              </div>
+              <div class="tab-side tab-inactive">日本</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">澳洲</div>
+              <div
+                class="tab-side tab-active side-JP t-white"
+                style="background-color: rgb(178, 0, 48)"
+              >
+                日本
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-AU t-white"
+                  style="background-color: rgb(0, 122, 75)"
+                >
+                  <img src="https://flagcdn.com/w40/au.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-JP t-white"
+                  style="background-color: rgb(178, 0, 48)"
+                >
+                  <img src="https://flagcdn.com/w40/jp.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-AU t-white"
+                  style="background-color: rgb(0, 122, 75)"
+                >
+                  <img src="https://flagcdn.com/w40/au.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-JP t-white"
+                  style="background-color: rgb(178, 0, 48)"
+                >
+                  <img src="https://flagcdn.com/w40/jp.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/9 19:00</span><span>南韓 vs 澳洲</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-KR t-white"
+                style="background-color: rgb(20, 24, 113)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">南韓</div>
+              </div>
+              <div
+                class="pitcher-side side-AU t-white"
+                style="background-color: rgb(0, 122, 75)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">澳洲</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-KR t-white"
+                style="background-color: rgb(20, 24, 113)"
+              >
+                南韓
+              </div>
+              <div class="tab-side tab-inactive">澳洲</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">南韓</div>
+              <div
+                class="tab-side tab-active side-AU t-white"
+                style="background-color: rgb(0, 122, 75)"
+              >
+                澳洲
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-KR t-white"
+                  style="background-color: rgb(20, 24, 113)"
+                >
+                  <img src="https://flagcdn.com/w40/kr.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-AU t-white"
+                  style="background-color: rgb(0, 122, 75)"
+                >
+                  <img src="https://flagcdn.com/w40/au.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-KR t-white"
+                  style="background-color: rgb(20, 24, 113)"
+                >
+                  <img src="https://flagcdn.com/w40/kr.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-AU t-white"
+                  style="background-color: rgb(0, 122, 75)"
+                >
+                  <img src="https://flagcdn.com/w40/au.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/10 19:00</span><span>捷克 vs 日本</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-CZ t-white"
+                style="background-color: rgb(36, 82, 127)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">捷克</div>
+              </div>
+              <div
+                class="pitcher-side side-JP t-white"
+                style="background-color: rgb(178, 0, 48)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">日本</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-CZ t-white"
+                style="background-color: rgb(36, 82, 127)"
+              >
+                捷克
+              </div>
+              <div class="tab-side tab-inactive">日本</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">捷克</div>
+              <div
+                class="tab-side tab-active side-JP t-white"
+                style="background-color: rgb(178, 0, 48)"
+              >
+                日本
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CZ t-white"
+                  style="background-color: rgb(36, 82, 127)"
+                >
+                  <img src="https://flagcdn.com/w40/cz.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-JP t-white"
+                  style="background-color: rgb(178, 0, 48)"
+                >
+                  <img src="https://flagcdn.com/w40/jp.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-CZ t-white"
+                  style="background-color: rgb(36, 82, 127)"
+                >
+                  <img src="https://flagcdn.com/w40/cz.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-JP t-white"
+                  style="background-color: rgb(178, 0, 48)"
+                >
+                  <img src="https://flagcdn.com/w40/jp.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pool-container"
+        style="border-left: 5px solid rgb(198, 69, 8)"
+      >
+        <div class="pool-header">
+          <span class="pool-badge">Pool D</span> Miami, USA
+        </div>
+        <div class="teams-grid">
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-DO"
+              style="background-color: rgb(178, 46, 59)"
+            >
+              <img
+                src="https://flagcdn.com/w40/do.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso DO-iso t-white">DOM</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">多明尼加</span
+              ><span class="team-name-en">D.R.</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-IL"
+              style="background-color: rgb(50, 108, 226)"
+            >
+              <img
+                src="https://flagcdn.com/w40/il.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso IL-iso t-white">ISR</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">以色列</span
+              ><span class="team-name-en">Israel</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-NL"
+              style="background-color: rgb(255, 139, 31)"
+            >
+              <img
+                src="https://flagcdn.com/w40/nl.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso NL-iso t-dark">NED</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">荷蘭</span
+              ><span class="team-name-en">Netherlands</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-NI"
+              style="background-color: rgb(134, 205, 244)"
+            >
+              <img
+                src="https://flagcdn.com/w40/ni.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso NI-iso t-dark">NCA</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">尼加拉瓜</span
+              ><span class="team-name-en">Nicaragua</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <div
+              class="team-swatch team-swatch-VE"
+              style="background-color: rgb(123, 10, 44)"
+            >
+              <img
+                src="https://flagcdn.com/w40/ve.png"
+                class="team-flag"
+              /><span class="gc-iso team-iso diag-iso VE-iso t-white">VEN</span>
+            </div>
+            <div class="team-info">
+              <span class="team-name">委內瑞拉</span
+              ><span class="team-name-en">Venezuela</span>
+            </div>
+          </div>
+        </div>
+        <div class="vs-label">Matchup UI Testing</div>
+        <div class="vs-grid">
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/6 12:00</span><span>荷蘭 vs 委內瑞拉</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-NL t-dark"
+                style="background-color: rgb(255, 139, 31)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">荷蘭</div>
+              </div>
+              <div
+                class="pitcher-side side-VE t-white"
+                style="background-color: rgb(123, 10, 44)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">委內瑞拉</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-NL t-dark"
+                style="background-color: rgb(255, 139, 31)"
+              >
+                荷蘭
+              </div>
+              <div class="tab-side tab-inactive">委內瑞拉</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">荷蘭</div>
+              <div
+                class="tab-side tab-active side-VE t-white"
+                style="background-color: rgb(123, 10, 44)"
+              >
+                委內瑞拉
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-NL t-dark"
+                  style="background-color: rgb(255, 139, 31)"
+                >
+                  <img src="https://flagcdn.com/w40/nl.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-VE t-white"
+                  style="background-color: rgb(123, 10, 44)"
+                >
+                  <img src="https://flagcdn.com/w40/ve.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-NL t-dark"
+                  style="background-color: rgb(255, 139, 31)"
+                >
+                  <img src="https://flagcdn.com/w40/nl.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-VE t-white"
+                  style="background-color: rgb(123, 10, 44)"
+                >
+                  <img src="https://flagcdn.com/w40/ve.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/6 19:00</span><span>尼加拉瓜 vs 多明尼加</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-NI t-dark"
+                style="background-color: rgb(134, 205, 244)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">尼加拉瓜</div>
+              </div>
+              <div
+                class="pitcher-side side-DO t-white"
+                style="background-color: rgb(178, 46, 59)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">多明尼加</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-NI t-dark"
+                style="background-color: rgb(134, 205, 244)"
+              >
+                尼加拉瓜
+              </div>
+              <div class="tab-side tab-inactive">多明尼加</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">尼加拉瓜</div>
+              <div
+                class="tab-side tab-active side-DO t-white"
+                style="background-color: rgb(178, 46, 59)"
+              >
+                多明尼加
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-NI t-dark"
+                  style="background-color: rgb(134, 205, 244)"
+                >
+                  <img src="https://flagcdn.com/w40/ni.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-DO t-white"
+                  style="background-color: rgb(178, 46, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/do.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-NI t-dark"
+                  style="background-color: rgb(134, 205, 244)"
+                >
+                  <img src="https://flagcdn.com/w40/ni.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-DO t-white"
+                  style="background-color: rgb(178, 46, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/do.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/7 12:00</span><span>尼加拉瓜 vs 荷蘭</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-NI t-dark"
+                style="background-color: rgb(134, 205, 244)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">尼加拉瓜</div>
+              </div>
+              <div
+                class="pitcher-side side-NL t-dark"
+                style="background-color: rgb(255, 139, 31)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">荷蘭</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-NI t-dark"
+                style="background-color: rgb(134, 205, 244)"
+              >
+                尼加拉瓜
+              </div>
+              <div class="tab-side tab-inactive">荷蘭</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">尼加拉瓜</div>
+              <div
+                class="tab-side tab-active side-NL t-dark"
+                style="background-color: rgb(255, 139, 31)"
+              >
+                荷蘭
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-NI t-dark"
+                  style="background-color: rgb(134, 205, 244)"
+                >
+                  <img src="https://flagcdn.com/w40/ni.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-NL t-dark"
+                  style="background-color: rgb(255, 139, 31)"
+                >
+                  <img src="https://flagcdn.com/w40/nl.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-NI t-dark"
+                  style="background-color: rgb(134, 205, 244)"
+                >
+                  <img src="https://flagcdn.com/w40/ni.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-NL t-dark"
+                  style="background-color: rgb(255, 139, 31)"
+                >
+                  <img src="https://flagcdn.com/w40/nl.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/7 19:00</span><span>以色列 vs 委內瑞拉</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-IL t-white"
+                style="background-color: rgb(50, 108, 226)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">以色列</div>
+              </div>
+              <div
+                class="pitcher-side side-VE t-white"
+                style="background-color: rgb(123, 10, 44)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">委內瑞拉</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-IL t-white"
+                style="background-color: rgb(50, 108, 226)"
+              >
+                以色列
+              </div>
+              <div class="tab-side tab-inactive">委內瑞拉</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">以色列</div>
+              <div
+                class="tab-side tab-active side-VE t-white"
+                style="background-color: rgb(123, 10, 44)"
+              >
+                委內瑞拉
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-IL t-white"
+                  style="background-color: rgb(50, 108, 226)"
+                >
+                  <img src="https://flagcdn.com/w40/il.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-VE t-white"
+                  style="background-color: rgb(123, 10, 44)"
+                >
+                  <img src="https://flagcdn.com/w40/ve.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-IL t-white"
+                  style="background-color: rgb(50, 108, 226)"
+                >
+                  <img src="https://flagcdn.com/w40/il.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-VE t-white"
+                  style="background-color: rgb(123, 10, 44)"
+                >
+                  <img src="https://flagcdn.com/w40/ve.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/8 12:00</span><span>荷蘭 vs 多明尼加</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-NL t-dark"
+                style="background-color: rgb(255, 139, 31)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">荷蘭</div>
+              </div>
+              <div
+                class="pitcher-side side-DO t-white"
+                style="background-color: rgb(178, 46, 59)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">多明尼加</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-NL t-dark"
+                style="background-color: rgb(255, 139, 31)"
+              >
+                荷蘭
+              </div>
+              <div class="tab-side tab-inactive">多明尼加</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">荷蘭</div>
+              <div
+                class="tab-side tab-active side-DO t-white"
+                style="background-color: rgb(178, 46, 59)"
+              >
+                多明尼加
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-NL t-dark"
+                  style="background-color: rgb(255, 139, 31)"
+                >
+                  <img src="https://flagcdn.com/w40/nl.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-DO t-white"
+                  style="background-color: rgb(178, 46, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/do.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-NL t-dark"
+                  style="background-color: rgb(255, 139, 31)"
+                >
+                  <img src="https://flagcdn.com/w40/nl.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-DO t-white"
+                  style="background-color: rgb(178, 46, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/do.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/8 19:00</span><span>尼加拉瓜 vs 以色列</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-NI t-dark"
+                style="background-color: rgb(134, 205, 244)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">尼加拉瓜</div>
+              </div>
+              <div
+                class="pitcher-side side-IL t-white"
+                style="background-color: rgb(50, 108, 226)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">以色列</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-NI t-dark"
+                style="background-color: rgb(134, 205, 244)"
+              >
+                尼加拉瓜
+              </div>
+              <div class="tab-side tab-inactive">以色列</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">尼加拉瓜</div>
+              <div
+                class="tab-side tab-active side-IL t-white"
+                style="background-color: rgb(50, 108, 226)"
+              >
+                以色列
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-NI t-dark"
+                  style="background-color: rgb(134, 205, 244)"
+                >
+                  <img src="https://flagcdn.com/w40/ni.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-IL t-white"
+                  style="background-color: rgb(50, 108, 226)"
+                >
+                  <img src="https://flagcdn.com/w40/il.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-NI t-dark"
+                  style="background-color: rgb(134, 205, 244)"
+                >
+                  <img src="https://flagcdn.com/w40/ni.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-IL t-white"
+                  style="background-color: rgb(50, 108, 226)"
+                >
+                  <img src="https://flagcdn.com/w40/il.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/9 12:00</span><span>多明尼加 vs 以色列</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-DO t-white"
+                style="background-color: rgb(178, 46, 59)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">多明尼加</div>
+              </div>
+              <div
+                class="pitcher-side side-IL t-white"
+                style="background-color: rgb(50, 108, 226)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">以色列</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-DO t-white"
+                style="background-color: rgb(178, 46, 59)"
+              >
+                多明尼加
+              </div>
+              <div class="tab-side tab-inactive">以色列</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">多明尼加</div>
+              <div
+                class="tab-side tab-active side-IL t-white"
+                style="background-color: rgb(50, 108, 226)"
+              >
+                以色列
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-DO t-white"
+                  style="background-color: rgb(178, 46, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/do.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-IL t-white"
+                  style="background-color: rgb(50, 108, 226)"
+                >
+                  <img src="https://flagcdn.com/w40/il.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-DO t-white"
+                  style="background-color: rgb(178, 46, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/do.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-IL t-white"
+                  style="background-color: rgb(50, 108, 226)"
+                >
+                  <img src="https://flagcdn.com/w40/il.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/9 19:00</span><span>委內瑞拉 vs 尼加拉瓜</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-VE t-white"
+                style="background-color: rgb(123, 10, 44)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">委內瑞拉</div>
+              </div>
+              <div
+                class="pitcher-side side-NI t-dark"
+                style="background-color: rgb(134, 205, 244)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">尼加拉瓜</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-VE t-white"
+                style="background-color: rgb(123, 10, 44)"
+              >
+                委內瑞拉
+              </div>
+              <div class="tab-side tab-inactive">尼加拉瓜</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">委內瑞拉</div>
+              <div
+                class="tab-side tab-active side-NI t-dark"
+                style="background-color: rgb(134, 205, 244)"
+              >
+                尼加拉瓜
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-VE t-white"
+                  style="background-color: rgb(123, 10, 44)"
+                >
+                  <img src="https://flagcdn.com/w40/ve.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-NI t-dark"
+                  style="background-color: rgb(134, 205, 244)"
+                >
+                  <img src="https://flagcdn.com/w40/ni.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-VE t-white"
+                  style="background-color: rgb(123, 10, 44)"
+                >
+                  <img src="https://flagcdn.com/w40/ve.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-NI t-dark"
+                  style="background-color: rgb(134, 205, 244)"
+                >
+                  <img src="https://flagcdn.com/w40/ni.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/10 19:00</span><span>以色列 vs 荷蘭</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-IL t-white"
+                style="background-color: rgb(50, 108, 226)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">以色列</div>
+              </div>
+              <div
+                class="pitcher-side side-NL t-dark"
+                style="background-color: rgb(255, 139, 31)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">荷蘭</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-IL t-white"
+                style="background-color: rgb(50, 108, 226)"
+              >
+                以色列
+              </div>
+              <div class="tab-side tab-inactive">荷蘭</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">以色列</div>
+              <div
+                class="tab-side tab-active side-NL t-dark"
+                style="background-color: rgb(255, 139, 31)"
+              >
+                荷蘭
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-IL t-white"
+                  style="background-color: rgb(50, 108, 226)"
+                >
+                  <img src="https://flagcdn.com/w40/il.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-NL t-dark"
+                  style="background-color: rgb(255, 139, 31)"
+                >
+                  <img src="https://flagcdn.com/w40/nl.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-IL t-white"
+                  style="background-color: rgb(50, 108, 226)"
+                >
+                  <img src="https://flagcdn.com/w40/il.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-NL t-dark"
+                  style="background-color: rgb(255, 139, 31)"
+                >
+                  <img src="https://flagcdn.com/w40/nl.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-wrapper">
+            <div class="match-date-header">
+              <span>3/11 20:00</span><span>多明尼加 vs 委內瑞拉</span>
+            </div>
+
+            <span class="ui-label">1. Pitcher</span>
+            <div class="ui-pitcher">
+              <div
+                class="pitcher-side side-DO t-white"
+                style="background-color: rgb(178, 46, 59)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">多明尼加</div>
+              </div>
+              <div
+                class="pitcher-side side-VE t-white"
+                style="background-color: rgb(123, 10, 44)"
+              >
+                <div class="p-name">Start Pitcher</div>
+                <div class="p-nation">委內瑞拉</div>
+              </div>
+            </div>
+
+            <span class="ui-label">2. Tab (Away Active)</span>
+            <div class="ui-tab-bar">
+              <div
+                class="tab-side tab-active side-DO t-white"
+                style="background-color: rgb(178, 46, 59)"
+              >
+                多明尼加
+              </div>
+              <div class="tab-side tab-inactive">委內瑞拉</div>
+            </div>
+
+            <span class="ui-label">3. Tab (Home Active)</span>
+            <div class="ui-tab-bar">
+              <div class="tab-side tab-inactive">多明尼加</div>
+              <div
+                class="tab-side tab-active side-VE t-white"
+                style="background-color: rgb(123, 10, 44)"
+              >
+                委內瑞拉
+              </div>
+            </div>
+
+            <span class="ui-label">4. Diagonal</span>
+            <div class="landscape">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-DO t-white"
+                  style="background-color: rgb(178, 46, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/do.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-VE t-white"
+                  style="background-color: rgb(123, 10, 44)"
+                >
+                  <img src="https://flagcdn.com/w40/ve.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+            <div class="square">
+              <div class="ui-diagonal">
+                <div
+                  class="diag-left side-DO t-white"
+                  style="background-color: rgb(178, 46, 59)"
+                >
+                  <img src="https://flagcdn.com/w40/do.png" class="diag-flag" />
+                </div>
+                <div
+                  class="diag-right side-VE t-white"
+                  style="background-color: rgb(123, 10, 44)"
+                >
+                  <img src="https://flagcdn.com/w40/ve.png" class="diag-flag" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script id="scriptData">
       // --- 1. CONFIGURATION ---
@@ -873,26 +5356,26 @@
       };
 
       let DEFAULT_COLORS = {
-        PR: "#1B72E8",
-        CU: "#302b7a",
-        CA: "#620E1C",
-        PA: "#c44a4e",
+        PR: "#1a79c1",
+        CU: "#002a8f",
+        CA: "#ca1c1c",
+        PA: "#ae373b",
         CO: "#FBEC89",
-        US: "#0A1528",
+        US: "#0c183c",
         MX: "#004028",
         IT: "#3161B9",
-        GB: "#E61938",
+        GB: "#9b1c31",
         BR: "#FFD500",
-        JP: "#9B0000",
-        CZ: "#C24E00",
-        KR: "#002C52",
-        TW: "#15379E",
+        JP: "#b20030",
+        CZ: "#24527f",
+        KR: "#141871",
+        TW: "#293d90",
         AU: "#007A4B",
-        VE: "#ffbb3d",
-        DO: "#004D9A",
-        NL: "#ff8e52",
-        IL: "#D6ECF9",
-        NI: "#86CDF4",
+        VE: "#7b0a2c",
+        DO: "#b22e3b",
+        NL: "#ff8b1f",
+        IL: "#326ce2",
+        NI: "#86cdf4",
       };
 
       const POOL_META = {
@@ -1141,9 +5624,18 @@
         const a = document.createElement("a");
         const now = new Date();
         a.href = URL.createObjectURL(blob);
-        a.download = `wbc-color-${now.getFullYear()}${String(
-          now.getMonth() + 1
-        ).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}.html`;
+
+        // --- 修改開始：加入時間格式 ---
+        const YYYY = now.getFullYear();
+        const MM = String(now.getMonth() + 1).padStart(2, "0");
+        const DD = String(now.getDate()).padStart(2, "0");
+        const HH = String(now.getHours()).padStart(2, "0");
+        const mm = String(now.getMinutes()).padStart(2, "0");
+
+        // 格式：wbc-color-20251222-1928.html
+        a.download = `wbc-color-${YYYY}${MM}${DD}-${HH}${mm}.html`;
+        // --- 修改結束 ---
+
         a.click();
       }
 
