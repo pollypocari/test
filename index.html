@@ -647,6 +647,23 @@
       </div>
     </div>
 
+    <div id="importModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">匯入色碼 (JSON 格式)</div>
+        <textarea
+          id="importInput"
+          class="modal-textarea"
+          placeholder='請貼上 JSON，例如：&#10;{&#10;    "加拿大": "#ff0000",&#10;    "日本": "#b20030"&#10;}'
+        ></textarea>
+        <div class="modal-actions">
+          <button class="btn" onclick="closeImportModal()">取消</button>
+          <button class="btn btn-import" onclick="confirmImport()">
+            確認匯入
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="control-zone">
       <div class="spectrum-wrapper">
         <div class="action-bar">
@@ -5480,49 +5497,79 @@
         });
       }
 
-      // BATCH IMPORT
+      // --- BATCH IMPORT MODAL FUNCTIONS ---
+
+      // 1. 打開匯入視窗
       function batchImport() {
-        const input = prompt(
-          "請貼上 20 個 Hex 色碼（順序：A池5隊 -> B池5隊 -> C池5隊 -> D池5隊）\n以逗號、空格或換行分隔："
-        );
-        if (!input) return;
+        document.getElementById("importInput").value = ""; // 清空
+        document.getElementById("importModal").style.display = "flex";
+        document.getElementById("importInput").focus();
+      }
 
-        // Extract hex codes using regex
-        const matches = input.match(/#[0-9a-fA-F]{6}|#[0-9a-fA-F]{3}/g);
+      // 2. 關閉匯入視窗
+      function closeImportModal() {
+        document.getElementById("importModal").style.display = "none";
+      }
 
-        if (!matches || matches.length === 0) {
-          alert("找不到有效的 Hex 色碼！");
+      // 3. 執行匯入邏輯 (按下「確認匯入」時觸發)
+      function confirmImport() {
+        const input = document.getElementById("importInput").value;
+
+        if (!input.trim()) {
+          closeImportModal();
           return;
         }
 
-        if (matches.length !== 20) {
-          if (
-            !confirm(
-              `偵測到 ${matches.length} 個色碼（預期 20 個）。\n順序將依照：Pool A -> B -> C -> D。\n是否繼續？`
-            )
-          ) {
-            return;
+        let importedData;
+        try {
+          importedData = JSON.parse(input);
+        } catch (e) {
+          alert(
+            'JSON 格式錯誤！請確認內容包含大括號 {} 與雙引號 "key": "value"。'
+          );
+          return;
+        }
+
+        // 建立「中文隊名 -> 代碼」的對照表 (完全匹配)
+        const nameToCode = {};
+        Object.keys(TEAM_INFO).forEach((code) => {
+          const nameCN = TEAM_INFO[code].name;
+          nameToCode[nameCN] = code;
+        });
+
+        let count = 0;
+        let notFound = [];
+
+        // 遍歷匯入的 JSON
+        for (let name in importedData) {
+          const hex = importedData[name];
+          const code = nameToCode[name];
+
+          if (code) {
+            // 簡單驗證 HEX 格式
+            if (/^#([0-9a-fA-F]{3}){1,2}$/.test(hex)) {
+              updateTeamColor(code, hex);
+              // 同步更新控制台顯示
+              const inputEl = document.getElementById(`input-${code}`);
+              if (inputEl) inputEl.value = hex;
+              count++;
+            }
+          } else {
+            notFound.push(name);
           }
         }
 
-        // Apply colors in order
-        let count = 0;
-        TEAM_ORDER.forEach((teamCode, index) => {
-          if (index < matches.length) {
-            // Ensure full 6-digit hex if 3-digit provided
-            let hex = matches[index];
-            if (hex.length === 4) {
-              hex = "#" + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
-            }
-            updateTeamColor(teamCode, hex);
-            // Also update the input field value in controller
-            document.getElementById(`input-${teamCode}`).value = hex;
-            count++;
-          }
-        });
+        // 結果回報
+        let msg = `成功匯入 ${count} 個隊伍顏色！`;
+        if (notFound.length > 0) {
+          msg += `\n\n⚠️ 以下隊名找不到對應 (請確認與 TEAM_INFO 名稱完全一致)：\n${notFound.join(
+            ", "
+          )}`;
+        }
 
-        alert(`成功匯入 ${count} 個隊伍顏色！`);
-        saveColors(); // Auto save after import
+        alert(msg);
+        saveColors(); // 自動存檔
+        closeImportModal(); // 關閉視窗
       }
 
       // HELPERS
