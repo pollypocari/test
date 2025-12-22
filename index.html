@@ -15,7 +15,7 @@
         --bg-panel: #fcfcfc;
         --text-main: #333333;
         --text-muted: #666666;
-        --border-color: #cccccc;
+        --border-color: #eaeaea;
         --btn-bg: #ffffff;
         --btn-text: #374151;
         --btn-hover: #f3f4f6;
@@ -78,15 +78,6 @@
       }
       .btn:hover {
         background-color: var(--btn-hover);
-      }
-
-      .btn-import {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-      }
-      .btn-import:hover {
-        background-color: #0056b3;
       }
 
       .btn-json {
@@ -184,7 +175,7 @@
       /* CONTROLLER CARD */
       .global-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
         gap: 15px;
         margin-bottom: 20px;
       }
@@ -247,22 +238,39 @@
         margin-bottom: 10px;
         font-weight: 500;
       }
+      .gc-name-reason {
+        font-size: 0.65rem;
+        color: var(--text-sub);
+        margin-bottom: 10px;
+        text-align: center;
+        padding: 0 5px;
+        line-height: 1.2;
+      }
 
       .gc-codes {
         font-family: monospace;
         font-size: 0.7rem;
         color: var(--text-muted);
         background: var(--code-bg);
-        width: 90%;
+        width: 80%;
         border-radius: 4px;
         padding: 6px 0;
         margin-bottom: 10px;
         text-align: center;
-        border: 1px solid var(--border-color);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .gc-codes:hover {
+        background-color: var(--btn-hover);
+        border-color: #999;
+        transform: scale(1.02);
       }
       .gc-code-line {
         display: block;
         line-height: 1.4;
+      }
+      .gc-codes .gc-code-line:nth-of-type(2) {
+        display: none;
       }
 
       .gc-btn-wrapper {
@@ -586,6 +594,37 @@
         color: #111;
         font-weight: 800;
       }
+
+      .float-emoji {
+        position: fixed;
+        font-size: 0.65rem;
+        color: var(--bg-body);
+        background: var(--text-main);
+        padding: 4px 12px;
+        border-radius: 100px;
+        pointer-events: none; /* 讓滑鼠可以穿透它，不擋路 */
+        z-index: 10000; /* 確保在最上層 */
+        animation: floatFade 0.6s ease-in-out forwards;
+      }
+
+      @keyframes floatFade {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -20%) scale(0.5);
+        }
+        15% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.2); /* 彈出效果 */
+        }
+        85% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.2); /* 彈出效果 */
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(1); /* 向上飄並消失 */
+        }
+      }
     </style>
   </head>
   <body>
@@ -617,24 +656,17 @@
             onclick="toggleTheme()"
             title="Toggle Theme"
           >
-            🌓 Theme
+            🌓 切換模式
           </button>
-          <button class="btn btn-import" onclick="batchImport()">
-            Batch Import
-          </button>
-          <button class="btn" onclick="resetToDefaults()">
-            Reset to Defaults
-          </button>
-          <button class="btn" onclick="saveColors()">Save to Browser</button>
-          <button class="btn" onclick="overrideDefault()">
-            Override Memory
-          </button>
+          <button class="btn" onclick="saveColors()">暫存改動</button>
+          <button class="btn" onclick="resetToDefaults()">回到預設</button>
           <button class="btn btn-download" onclick="exportHTML()">
-            Download HTML
+            下載這版
           </button>
           <button class="btn btn-json" onclick="openJsonModal()">
-            Export JSON
+            輸出色碼
           </button>
+          <button class="btn" onclick="batchImport()">匯入色碼</button>
         </div>
         <div class="spectrum-container" id="spectrumBar"></div>
       </div>
@@ -684,6 +716,7 @@
           code: "CAN",
           abbr: "加",
           pool: "A",
+          reason: "楓葉之國 (The Maple Leaf)，鮮紅",
         },
         CO: {
           name: "哥倫比亞",
@@ -691,6 +724,7 @@
           code: "COL",
           abbr: "哥",
           pool: "A",
+          reason: "咖啡農 (Los Cafeteros)，鮮黃",
         },
         CU: {
           name: "古巴",
@@ -698,6 +732,7 @@
           code: "CUB",
           abbr: "古",
           pool: "A",
+          reason: "紅色機器，紅藍 (海軍藍) 雙棲",
         },
         PA: {
           name: "巴拿馬",
@@ -705,6 +740,7 @@
           code: "PAN",
           abbr: "巴",
           pool: "A",
+          reason: "運河軍團 (Marea Roja)，紅色",
         },
         PR: {
           name: "波多黎各",
@@ -712,6 +748,7 @@
           code: "PUR",
           abbr: "波",
           pool: "A",
+          reason: "金髮軍團 (Team Rubio)，電光藍",
         },
         BR: {
           name: "巴西",
@@ -719,6 +756,7 @@
           code: "BRA",
           abbr: "西",
           pool: "B",
+          reason: "金絲雀 (Canarinho)，黃綠配",
         },
         GB: {
           name: "英國",
@@ -726,6 +764,7 @@
           code: "GBR",
           abbr: "英",
           pool: "B",
+          reason: "米字旗 (Union Jack)，皇家紅",
         },
         IT: {
           name: "義大利",
@@ -733,6 +772,7 @@
           code: "ITA",
           abbr: "義",
           pool: "B",
+          reason: "藍色軍團 (Azzurri)，湛藍",
         },
         MX: {
           name: "墨西哥",
@@ -740,14 +780,23 @@
           code: "MEX",
           abbr: "墨",
           pool: "B",
+          reason: "三色軍團 (El Tri)，阿茲特克綠",
         },
-        US: { name: "美國", nameEn: "USA", code: "USA", abbr: "美", pool: "B" },
+        US: {
+          name: "美國",
+          nameEn: "USA",
+          code: "USA",
+          abbr: "美",
+          pool: "B",
+          reason: "星條旗 (Old Glory)，海軍深藍",
+        },
         AU: {
           name: "澳洲",
           nameEn: "Australia",
           code: "AUS",
           abbr: "澳",
           pool: "C",
+          reason: "國花金合歡，綠金配",
         },
         TW: {
           name: "中華臺北",
@@ -755,6 +804,7 @@
           code: "TPE",
           abbr: "台",
           pool: "C",
+          reason: "中華藍 (CT Blue)，藍白配",
         },
         CZ: {
           name: "捷克",
@@ -762,6 +812,7 @@
           code: "CZE",
           abbr: "捷",
           pool: "C",
+          reason: "波希米亞獅 (Bohemian Lion)，紅白藍",
         },
         JP: {
           name: "日本",
@@ -769,6 +820,7 @@
           code: "JPN",
           abbr: "日",
           pool: "C",
+          reason: "侍ジャパン｜武士紺與日之丸紅",
         },
         KR: {
           name: "南韓",
@@ -776,6 +828,7 @@
           code: "KOR",
           abbr: "韓",
           pool: "C",
+          reason: "太極旗，陰儀深藍",
         },
         DO: {
           name: "多明尼加",
@@ -783,6 +836,7 @@
           code: "DOM",
           abbr: "多",
           pool: "D",
+          reason: "香蕉力量 Plátano Power，紅藍白",
         },
         IL: {
           name: "以色列",
@@ -790,6 +844,7 @@
           code: "ISR",
           abbr: "以",
           pool: "D",
+          reason: "大衛之星 / 六芒星，藍白配",
         },
         NL: {
           name: "荷蘭",
@@ -797,6 +852,7 @@
           code: "NED",
           abbr: "荷",
           pool: "D",
+          reason: "橘色軍團 (Oranje)，皇室奧蘭治",
         },
         NI: {
           name: "尼加拉瓜",
@@ -804,6 +860,7 @@
           code: "NCA",
           abbr: "尼",
           pool: "D",
+          reason: "藍白軍團 (Azul y Blanco)，淺天藍",
         },
         VE: {
           name: "委內瑞拉",
@@ -811,6 +868,7 @@
           code: "VEN",
           abbr: "委",
           pool: "D",
+          reason: "紅酒軍團 (La Vinotinto)，酒紅色",
         },
       };
 
@@ -1062,13 +1120,6 @@
         localStorage.setItem("wbc_colors_v9", JSON.stringify(currentColors));
         alert("色彩已儲存至瀏覽器快取！");
       }
-      function overrideDefault() {
-        if (
-          confirm("這將覆蓋記憶體中的 DEFAULT_COLORS。Reset 時會回到此狀態。")
-        ) {
-          DEFAULT_COLORS = { ...currentColors };
-        }
-      }
       function resetToDefaults() {
         if (confirm("還原成預設配色？")) {
           currentColors = { ...DEFAULT_COLORS };
@@ -1136,18 +1187,22 @@
           const div = document.createElement("div");
           div.className = "global-card";
           div.innerHTML = `
-                <div class="gc-visual-area" id="visual-${key}">
-                    <div class="gc-visual-top"><img src="https://flagcdn.com/w40/${key.toLowerCase()}.png" class="gc-flag"><span class="gc-iso ${key}-iso">${
+<div class="gc-visual-area" id="visual-${key}">
+<div class="gc-visual-top"><img src="https://flagcdn.com/w40/${key.toLowerCase()}.png" class="gc-flag"><span class="gc-iso ${key}-iso">${
             t.code
           }</span></div>
-                    <div class="gc-aa-info ${key}-aa-text" id="label-aa-${key}">AA --</div>
-                </div>
-                <div class="gc-name-cn">${
-                  t.name
-                }</div><div class="gc-name-en">${t.nameEn}</div>
-                <div class="gc-codes"><span class="gc-code-line" id="label-hex-${key}">${hex.toUpperCase()}</span><span class="gc-code-line" id="label-rgb-${key}">rgb(...)</span></div>
-                <div class="gc-btn-wrapper"><div class="gc-btn-style">Adjust Color</div><input type="color" class="gc-color-input" id="input-${key}" value="${hex}"></div>
-            `;
+<div class="gc-aa-info ${key}-aa-text" id="label-aa-${key}">AA --</div>
+</div>
+<div class="gc-name-cn">${t.name}</div><div class="gc-name-en">${t.nameEn}</div>
+<div class="gc-name-reason">${t.reason}</div>
+
+<div class="gc-codes" onclick="copyHex('${key}', event)" title="點擊複製 HEX">
+<span class="gc-code-line" id="label-hex-${key}">${hex.toUpperCase()}</span>
+<span class="gc-code-line" id="label-rgb-${key}">rgb(...)</span>
+</div>
+
+<div class="gc-btn-wrapper"><div class="gc-btn-style">Adjust Color</div><input type="color" class="gc-color-input" id="input-${key}" value="${hex}"></div>
+`;
           container.appendChild(div);
           document
             .getElementById(`input-${key}`)
@@ -1181,66 +1236,58 @@
           let sHtml = "";
           SCHEDULE[p].forEach((g) => {
             sHtml += `
-              <div class="match-wrapper">
-                <div class="match-date-header"><span>${g.d}</span><span>${
+<div class="match-wrapper">
+<div class="match-date-header"><span>${g.d}</span><span>${
               TEAM_INFO[g.away].name
             } vs ${TEAM_INFO[g.home].name}</span></div>
-                
-                <span class="ui-label">1. Pitcher</span>
-                <div class="ui-pitcher">
-                    <div class="pitcher-side side-${g.away}">
-                        <div class="p-name">Start Pitcher</div>
-                        <div class="p-nation">${TEAM_INFO[g.away].name}</div>
-                    </div>
-                    <div class="pitcher-side side-${g.home}">
-                        <div class="p-name">Start Pitcher</div>
-                        <div class="p-nation">${TEAM_INFO[g.home].name}</div>
-                    </div>
-                </div>
 
-                <span class="ui-label">2. Tab (Away Active)</span>
-                <div class="ui-tab-bar">
-                    <div class="tab-side tab-active side-${g.away}">${
-              TEAM_INFO[g.away].name
-            }</div>
-                    <div class="tab-side tab-inactive">${
-                      TEAM_INFO[g.home].name
-                    }</div>
-                </div>
+<span class="ui-label">1. Pitcher</span>
+<div class="ui-pitcher">
+<div class="pitcher-side side-${g.away}">
+<div class="p-name">Start Pitcher</div>
+<div class="p-nation">${TEAM_INFO[g.away].name}</div>
+</div>
+<div class="pitcher-side side-${g.home}">
+<div class="p-name">Start Pitcher</div>
+<div class="p-nation">${TEAM_INFO[g.home].name}</div>
+</div>
+</div>
 
-                <span class="ui-label">3. Tab (Home Active)</span>
-                <div class="ui-tab-bar">
-                    <div class="tab-side tab-inactive">${
-                      TEAM_INFO[g.away].name
-                    }</div>
-                    <div class="tab-side tab-active side-${g.home}">${
-              TEAM_INFO[g.home].name
-            }</div>
-                </div>
+<span class="ui-label">2. Tab (Away Active)</span>
+<div class="ui-tab-bar">
+<div class="tab-side tab-active side-${g.away}">${TEAM_INFO[g.away].name}</div>
+<div class="tab-side tab-inactive">${TEAM_INFO[g.home].name}</div>
+</div>
 
-                <span class="ui-label">4. Diagonal</span>
-                <div class="landscape">
-                    <div class="ui-diagonal">
-                        <div class="diag-left side-${g.away}">
-                            <img src="https://flagcdn.com/w40/${g.away.toLowerCase()}.png" class="diag-flag">
-                        </div>
-                        <div class="diag-right side-${g.home}">
-                            <img src="https://flagcdn.com/w40/${g.home.toLowerCase()}.png" class="diag-flag">
-                        </div>
-                    </div>
-                </div>
-                <div class="square">
-                    <div class="ui-diagonal">
-                        <div class="diag-left side-${g.away}">
-                            <img src="https://flagcdn.com/w40/${g.away.toLowerCase()}.png" class="diag-flag">
-                        </div>
-                        <div class="diag-right side-${g.home}">
-                            <img src="https://flagcdn.com/w40/${g.home.toLowerCase()}.png" class="diag-flag">
-                        </div>
-                    </div>
-                </div>
-              </div>
-            `;
+<span class="ui-label">3. Tab (Home Active)</span>
+<div class="ui-tab-bar">
+<div class="tab-side tab-inactive">${TEAM_INFO[g.away].name}</div>
+<div class="tab-side tab-active side-${g.home}">${TEAM_INFO[g.home].name}</div>
+</div>
+
+<span class="ui-label">4. Diagonal</span>
+<div class="landscape">
+<div class="ui-diagonal">
+<div class="diag-left side-${g.away}">
+<img src="https://flagcdn.com/w40/${g.away.toLowerCase()}.png" class="diag-flag">
+</div>
+<div class="diag-right side-${g.home}">
+<img src="https://flagcdn.com/w40/${g.home.toLowerCase()}.png" class="diag-flag">
+</div>
+</div>
+</div>
+<div class="square">
+<div class="ui-diagonal">
+<div class="diag-left side-${g.away}">
+<img src="https://flagcdn.com/w40/${g.away.toLowerCase()}.png" class="diag-flag">
+</div>
+<div class="diag-right side-${g.home}">
+<img src="https://flagcdn.com/w40/${g.home.toLowerCase()}.png" class="diag-flag">
+</div>
+</div>
+</div>
+</div>
+`;
           });
 
           const section = document.createElement("div");
@@ -1292,6 +1339,29 @@
         Object.keys(currentColors).forEach((k) =>
           updateTeamColor(k, currentColors[k])
         );
+      }
+
+      function copyHex(key, event) {
+        const hex = currentColors[key].toUpperCase();
+        navigator.clipboard.writeText(hex).then(() => {
+          // 1. 創建一個 span 元素放 emoji
+          const el = document.createElement("span");
+          el.className = "float-emoji";
+          el.innerText = "複製成功 😎"; // 這裡可以換成 👌 或 👍
+
+          // 2. 定位在滑鼠點擊的位置
+          // 使用 event.clientX/Y 確保它是跟隨視窗的座標
+          el.style.left = event.clientX + "px";
+          el.style.top = event.clientY + "px";
+
+          // 3. 加到畫面上
+          document.body.appendChild(el);
+
+          // 4. 動畫播完後 (0.8s) 自動移除元素，保持 DOM 乾淨
+          setTimeout(() => {
+            el.remove();
+          }, 800);
+        });
       }
       init();
 
