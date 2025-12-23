@@ -1000,18 +1000,20 @@
 
       // JSON EXPORT MODAL
       function openJsonModal() {
-        const orderedColors = {};
-
-        // 修改這裡：
+        let lines = [];
+        lines.push("let DEFAULT_COLORS = {");
+      
         TEAM_ORDER.forEach((code) => {
-          // 原本是: orderedColors[code] = currentColors[code];
-          // 改成用中文名稱當 Key:
-          const nameCN = TEAM_INFO[code].name;
-          orderedColors[nameCN] = currentColors[code];
+          const hex = currentColors[code];
+          if (hex) {
+            lines.push(`  ${code}: "${hex}",`);
+          }
         });
-
-        const jsonStr = JSON.stringify(orderedColors, null, 4);
-        document.getElementById("jsonOutput").value = jsonStr;
+      
+        lines.push("};");
+      
+        const output = lines.join("\n");
+        document.getElementById("jsonOutput").value = output;
         document.getElementById("jsonModal").style.display = "flex";
       }
 
@@ -1045,62 +1047,51 @@
       // 3. 執行匯入邏輯 (按下「確認匯入」時觸發)
       function confirmImport() {
         const input = document.getElementById("importInput").value;
-
+      
         if (!input.trim()) {
           closeImportModal();
           return;
         }
-
+      
         let importedData;
+      
         try {
-          importedData = JSON.parse(input);
+          // 1️⃣ 把 `let DEFAULT_COLORS = {...};` 變成純物件
+          const cleaned = input
+            .replace(/let\s+DEFAULT_COLORS\s*=\s*/g, "")
+            .replace(/;$/, "");
+      
+          // 2️⃣ 用 Function 安全解析
+          importedData = new Function(`return (${cleaned})`)();
         } catch (e) {
-          alert(
-            'JSON 格式錯誤！請確認內容包含大括號 {} 與雙引號 "key": "value"。'
-          );
+          alert("格式錯誤！請貼上完整的 DEFAULT_COLORS 定義。");
           return;
         }
-
-        // 建立「中文隊名 -> 代碼」的對照表 (完全匹配)
-        const nameToCode = {};
-        Object.keys(TEAM_INFO).forEach((code) => {
-          const nameCN = TEAM_INFO[code].name;
-          nameToCode[nameCN] = code;
-        });
-
+      
         let count = 0;
-        let notFound = [];
-
-        // 遍歷匯入的 JSON
-        for (let name in importedData) {
-          const hex = importedData[name];
-          const code = nameToCode[name];
-
-          if (code) {
-            // 簡單驗證 HEX 格式
-            if (/^#([0-9a-fA-F]{3}){1,2}$/.test(hex)) {
-              updateTeamColor(code, hex);
-              // 同步更新控制台顯示
-              const inputEl = document.getElementById(`input-${code}`);
-              if (inputEl) inputEl.value = hex;
-              count++;
-            }
+        let invalid = [];
+      
+        Object.keys(importedData).forEach((code) => {
+          const hex = importedData[code];
+      
+          if (TEAM_INFO[code] && /^#([0-9a-fA-F]{3}){1,2}$/.test(hex)) {
+            updateTeamColor(code, hex);
+            const inputEl = document.getElementById(`input-${code}`);
+            if (inputEl) inputEl.value = hex;
+            count++;
           } else {
-            notFound.push(name);
+            invalid.push(code);
           }
-        }
-
-        // 結果回報
+        });
+      
         let msg = `成功匯入 ${count} 個隊伍顏色！`;
-        if (notFound.length > 0) {
-          msg += `\n\n⚠️ 以下隊名找不到對應 (請確認與 TEAM_INFO 名稱完全一致)：\n${notFound.join(
-            ", "
-          )}`;
+        if (invalid.length) {
+          msg += `\n\n⚠️ 無效或不存在的代碼：\n${invalid.join(", ")}`;
         }
-
+      
         alert(msg);
-        saveColors(); // 自動存檔
-        closeImportModal(); // 關閉視窗
+        saveColors();
+        closeImportModal();
       }
 
       // HELPERS
