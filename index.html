@@ -60,8 +60,20 @@
       /* BUTTONS */
       .action-bar {
         display: flex;
-        gap: 10px;
-        flex-wrap: wrap; /* Allow wrapping on small screens */
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .action-left,
+      .action-right {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .btn-anchor {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        background: var(--bg-panel);
       }
       .btn {
         padding: 8px 16px;
@@ -104,7 +116,7 @@
         padding: 30px;
         margin-top: 20px;
         margin-bottom: 40px;
-        box-shadow: var(--shadow);
+        /* box-shadow: var(--shadow); */
         position: relative;
         transition: background-color 0.3s;
       }
@@ -139,7 +151,7 @@
       .spectrum-wrapper {
         position: sticky;
         top: 0;
-        z-index: 100;
+        z-index: 999;
         background-color: var(--bg-body);
         padding: 15px 0;
         margin-top: -15px;
@@ -147,6 +159,7 @@
         flex-direction: column;
         gap: 10px;
         transition: background-color 0.3s;
+        border-radius: 0 0 16px 16px;
       }
       .spectrum-container {
         width: 100%;
@@ -154,7 +167,7 @@
         border-radius: 8px;
         overflow: hidden;
         display: flex;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
         border: 1px solid var(--border-color);
         cursor: pointer;
       }
@@ -632,7 +645,7 @@
     </style>
   </head>
   <body>
-    <h1>2026 WBC Palette Studio (v18.3)</h1>
+    <h1>2026 WBC Palette Studio (v19.1)</h1>
     <p class="intro">
       評估標準：<br />
       ① 是否符合國家 / 國旗／棒球賽事視覺記憶<br />
@@ -659,7 +672,7 @@
         <textarea
           id="importInput"
           class="modal-textarea"
-          placeholder='請貼上 JSON (格式跟匯出的一樣)'
+          placeholder="請貼上 JSON (格式跟匯出的一樣)"
         ></textarea>
         <div class="modal-actions">
           <button class="btn" onclick="closeImportModal()">取消</button>
@@ -670,9 +683,9 @@
       </div>
     </div>
 
-    <div class="control-zone">
-      <div class="spectrum-wrapper">
-        <div class="action-bar">
+    <div class="spectrum-wrapper">
+      <div class="action-bar">
+        <div class="action-left">
           <button class="btn" onclick="toggleTheme()" title="Toggle Theme">
             🌓 切換模式
           </button>
@@ -686,9 +699,20 @@
           </button>
           <button class="btn" onclick="batchImport()">匯入色碼</button>
         </div>
-        <div class="spectrum-container" id="spectrumBar"></div>
+        <div class="action-right">
+          <button class="btn btn-anchor" onclick="scrollToPool('A')">
+            Pool A
+          </button>
+          <button class="btn btn-anchor" onclick="scrollToPool('B')">B</button>
+          <button class="btn btn-anchor" onclick="scrollToPool('C')">C</button>
+          <button class="btn btn-anchor" onclick="scrollToPool('D')">D</button>
+        </div>
       </div>
-      <div class="pool-container" style="border-left: 5px solid #333">
+      <div class="spectrum-container" id="spectrumBar"></div>
+    </div>
+
+    <div class="control-zone">
+      <div class="pool-container" style="border-left: 0px solid #333">
         <div class="pool-header" style="border-color: var(--border-color)">
           <div style="display: flex; align-items: center; gap: 10px">
             <span class="pool-badge">Controller</span>
@@ -700,13 +724,13 @@
     </div>
 
     <div id="poolsContainer"></div>
-    
-    <div class="pool-container" style="border-left: 5px solid #333">
+
+    <div class="pool-container" style="border-left: 0px solid #333">
       <div class="pool-header">
         <span class="pool-badge">2023</span>
         WBC 淘汰賽配色測試
       </div>
-    
+
       <!-- Quarterfinals -->
       <div class="vs-label">複賽</div>
       <div class="vs-grid">
@@ -715,42 +739,66 @@
             <span>Quarterfinal</span><span>澳洲 vs 古巴</span>
           </div>
           <div class="ui-pitcher">
-            <div class="pitcher-side side-AU"><div class="p-name">Starter</div><div class="p-nation">澳洲</div></div>
-            <div class="pitcher-side side-CU"><div class="p-name">Starter</div><div class="p-nation">古巴</div></div>
+            <div class="pitcher-side side-AU">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">澳洲</div>
+            </div>
+            <div class="pitcher-side side-CU">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">古巴</div>
+            </div>
           </div>
         </div>
-    
+
         <div class="match-wrapper">
           <div class="match-date-header">
             <span>Quarterfinal</span><span>義大利 vs 日本</span>
           </div>
           <div class="ui-pitcher">
-            <div class="pitcher-side side-IT"><div class="p-name">Starter</div><div class="p-nation">義大利</div></div>
-            <div class="pitcher-side side-JP"><div class="p-name">Starter</div><div class="p-nation">日本</div></div>
+            <div class="pitcher-side side-IT">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">義大利</div>
+            </div>
+            <div class="pitcher-side side-JP">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">日本</div>
+            </div>
           </div>
         </div>
-    
+
         <div class="match-wrapper">
           <div class="match-date-header">
             <span>Quarterfinal</span><span>波多黎各 vs 墨西哥</span>
           </div>
           <div class="ui-pitcher">
-            <div class="pitcher-side side-PR"><div class="p-name">Starter</div><div class="p-nation">波多黎各</div></div>
-            <div class="pitcher-side side-MX"><div class="p-name">Starter</div><div class="p-nation">墨西哥</div></div>
+            <div class="pitcher-side side-PR">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">波多黎各</div>
+            </div>
+            <div class="pitcher-side side-MX">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">墨西哥</div>
+            </div>
           </div>
         </div>
-    
+
         <div class="match-wrapper">
           <div class="match-date-header">
             <span>Quarterfinal</span><span>美國 vs 委內瑞拉</span>
           </div>
           <div class="ui-pitcher">
-            <div class="pitcher-side side-US"><div class="p-name">Starter</div><div class="p-nation">美國</div></div>
-            <div class="pitcher-side side-VE"><div class="p-name">Starter</div><div class="p-nation">委內瑞拉</div></div>
+            <div class="pitcher-side side-US">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">美國</div>
+            </div>
+            <div class="pitcher-side side-VE">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">委內瑞拉</div>
+            </div>
           </div>
         </div>
       </div>
-    
+
       <!-- Semifinals -->
       <div class="vs-label">決賽</div>
       <div class="vs-grid">
@@ -759,22 +807,34 @@
             <span>Semifinal</span><span>古巴 vs 美國</span>
           </div>
           <div class="ui-pitcher">
-            <div class="pitcher-side side-CU"><div class="p-name">Starter</div><div class="p-nation">古巴</div></div>
-            <div class="pitcher-side side-US"><div class="p-name">Starter</div><div class="p-nation">美國</div></div>
+            <div class="pitcher-side side-CU">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">古巴</div>
+            </div>
+            <div class="pitcher-side side-US">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">美國</div>
+            </div>
           </div>
         </div>
-    
+
         <div class="match-wrapper">
           <div class="match-date-header">
             <span>Semifinal</span><span>墨西哥 vs 日本</span>
           </div>
           <div class="ui-pitcher">
-            <div class="pitcher-side side-MX"><div class="p-name">Starter</div><div class="p-nation">墨西哥</div></div>
-            <div class="pitcher-side side-JP"><div class="p-name">Starter</div><div class="p-nation">日本</div></div>
+            <div class="pitcher-side side-MX">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">墨西哥</div>
+            </div>
+            <div class="pitcher-side side-JP">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">日本</div>
+            </div>
           </div>
         </div>
       </div>
-    
+
       <!-- Final -->
       <div class="vs-label">總決賽</div>
       <div class="vs-grid">
@@ -783,8 +843,14 @@
             <span>Final</span><span>美國 vs 日本</span>
           </div>
           <div class="ui-pitcher">
-            <div class="pitcher-side side-US"><div class="p-name">Starter</div><div class="p-nation">美國</div></div>
-            <div class="pitcher-side side-JP"><div class="p-name">Starter</div><div class="p-nation">日本</div></div>
+            <div class="pitcher-side side-US">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">美國</div>
+            </div>
+            <div class="pitcher-side side-JP">
+              <div class="p-name">Starter</div>
+              <div class="p-nation">日本</div>
+            </div>
           </div>
         </div>
       </div>
@@ -823,8 +889,7 @@
           code: "CAN",
           abbr: "加",
           pool: "A",
-          reason:
-            "楓葉之國 (The Maple Leaf)，國旗鮮紅為核心識別",
+          reason: "楓葉之國 (The Maple Leaf)，國旗鮮紅為核心識別",
         },
         CO: {
           name: "哥倫比亞",
@@ -841,8 +906,7 @@
           code: "CUB",
           abbr: "古",
           pool: "A",
-          reason:
-            "革命棒球強權，國旗紅藍雙主色體系（UI 以藍色為主並調整亮度）",
+          reason: "革命棒球強權，國旗紅藍雙主色體系（UI 以藍色為主並調整亮度）",
         },
         PA: {
           name: "巴拿馬",
@@ -868,8 +932,7 @@
           code: "BRA",
           abbr: "西",
           pool: "B",
-          reason:
-            "金絲雀 (Canarinho)，黃綠為國家體育識別",
+          reason: "金絲雀 (Canarinho)，黃綠為國家體育識別",
         },
         GB: {
           name: "英國",
@@ -886,8 +949,7 @@
           code: "ITA",
           abbr: "義",
           pool: "B",
-          reason:
-            "藍色軍團 (Azzurri)，義大利國家代表隊通用識別色",
+          reason: "藍色軍團 (Azzurri)，義大利國家代表隊通用識別色",
         },
         MX: {
           name: "墨西哥",
@@ -895,8 +957,7 @@
           code: "MEX",
           abbr: "墨",
           pool: "B",
-          reason:
-            "三色軍團 (El Tri)，國家隊慣用深綠色系",
+          reason: "三色軍團 (El Tri)，國家隊慣用深綠色系",
         },
         US: {
           name: "美國",
@@ -904,8 +965,7 @@
           code: "USA",
           abbr: "美",
           pool: "B",
-          reason:
-            "星條旗 (Old Glory)，USA Baseball 傳統海軍深藍",
+          reason: "星條旗 (Old Glory)，USA Baseball 傳統海軍深藍",
         },
         AU: {
           name: "澳洲",
@@ -948,8 +1008,7 @@
           code: "KOR",
           abbr: "韓",
           pool: "C",
-          reason:
-            "太極旗配色體系，陰儀深藍為國家隊核心識別",
+          reason: "太極旗配色體系，陰儀深藍為國家隊核心識別",
         },
         DO: {
           name: "多明尼加",
@@ -973,8 +1032,7 @@
           code: "NLD",
           abbr: "荷",
           pool: "D",
-          reason:
-            "橘色軍團 (Oranje)，皇室奧蘭治橘為國家象徵",
+          reason: "橘色軍團 (Oranje)，皇室奧蘭治橘為國家象徵",
         },
         NI: {
           name: "尼加拉瓜",
@@ -991,8 +1049,7 @@
           code: "VEN",
           abbr: "委",
           pool: "D",
-          reason:
-            "紅酒軍團 (La Vinotinto)，國家隊標誌性酒紅色",
+          reason: "紅酒軍團 (La Vinotinto)，國家隊標誌性酒紅色",
         },
       };
 
@@ -1018,7 +1075,7 @@
         NI: "#263e70",
         VE: "#66001f",
       };
-      
+
       const POOL_META = {
         A: { city: "San Juan, Puerto Rico", color: "#00be64" },
         B: { city: "Houston, USA", color: "#ffc300" },
@@ -1095,16 +1152,16 @@
       function openJsonModal() {
         let lines = [];
         lines.push("let DEFAULT_COLORS = {");
-      
+
         TEAM_ORDER.forEach((code) => {
           const hex = currentColors[code];
           if (hex) {
             lines.push(`  ${code}: "${hex}",`);
           }
         });
-      
+
         lines.push("};");
-      
+
         const output = lines.join("\n");
         document.getElementById("jsonOutput").value = output;
         document.getElementById("jsonModal").style.display = "flex";
@@ -1140,33 +1197,33 @@
       // 3. 執行匯入邏輯 (按下「確認匯入」時觸發)
       function confirmImport() {
         const input = document.getElementById("importInput").value;
-      
+
         if (!input.trim()) {
           closeImportModal();
           return;
         }
-      
+
         let importedData;
-      
+
         try {
           // 1️⃣ 把 `let DEFAULT_COLORS = {...};` 變成純物件
           const cleaned = input
             .replace(/let\s+DEFAULT_COLORS\s*=\s*/g, "")
             .replace(/;$/, "");
-      
+
           // 2️⃣ 用 Function 安全解析
           importedData = new Function(`return (${cleaned})`)();
         } catch (e) {
           alert("格式錯誤！請貼上完整的 DEFAULT_COLORS 定義。");
           return;
         }
-      
+
         let count = 0;
         let invalid = [];
-      
+
         Object.keys(importedData).forEach((code) => {
           const hex = importedData[code];
-      
+
           if (TEAM_INFO[code] && /^#([0-9a-fA-F]{3}){1,2}$/.test(hex)) {
             updateTeamColor(code, hex);
             const inputEl = document.getElementById(`input-${code}`);
@@ -1176,12 +1233,12 @@
             invalid.push(code);
           }
         });
-      
+
         let msg = `成功匯入 ${count} 個隊伍顏色！`;
         if (invalid.length) {
           msg += `\n\n⚠️ 無效或不存在的代碼：\n${invalid.join(", ")}`;
         }
-      
+
         alert(msg);
         saveColors();
         closeImportModal();
@@ -1373,7 +1430,7 @@
         container.innerHTML = "";
         Object.keys(POOL_META).forEach((p) => {
           const meta = POOL_META[p];
-          const border = `border-left: 5px solid ${meta.color};`;
+          const border = `border-left: 0px solid ${meta.color};`;
           let tHtml = "";
           Object.keys(TEAM_INFO)
             .filter((k) => TEAM_INFO[k].pool === p)
@@ -1459,6 +1516,7 @@
 
           const section = document.createElement("div");
           section.className = "pool-container";
+          section.id = `pool-${p}`;
           section.style.cssText = border;
           section.innerHTML = `<div class="pool-header"><span class="pool-badge">Pool ${p}</span> ${meta.city}</div><div class="teams-grid">${tHtml}</div><div class="vs-label">Matchup UI Testing</div><div class="vs-grid">${sHtml}</div>`;
           container.appendChild(section);
@@ -1530,6 +1588,18 @@
           }, 800);
         });
       }
+
+      function scrollToPool(pool) {
+        const target = document.getElementById(`pool-${pool}`);
+        if (!target) return;
+
+        const yOffset = -140; // 預留給 sticky spectrum
+        const y =
+          target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+
       init();
 
       // Spectrum Click to Scroll Top
