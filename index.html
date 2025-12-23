@@ -3001,168 +3001,189 @@
         "VE", // Pool D
       ];
 
-      const TEAM_INFO = {
-        CA: {
-          name: "加拿大",
-          nameEn: "Canada",
-          code: "CAN",
-          abbr: "加",
-          pool: "A",
-          reason: "楓葉之國 (The Maple Leaf)，鮮紅",
-        },
-        CO: {
-          name: "哥倫比亞",
-          nameEn: "Colombia",
-          code: "COL",
-          abbr: "哥",
-          pool: "A",
-          reason: "咖啡農 (Los Cafeteros)，鮮黃",
-        },
-        CU: {
-          name: "古巴",
-          nameEn: "Cuba",
-          code: "CUB",
-          abbr: "古",
-          pool: "A",
-          reason: "紅色機器，紅藍 (海軍藍) 雙棲",
-        },
-        PA: {
-          name: "巴拿馬",
-          nameEn: "Panama",
-          code: "PAN",
-          abbr: "巴",
-          pool: "A",
-          reason: "運河軍團 (Marea Roja)，紅色",
-        },
-        PR: {
-          name: "波多黎各",
-          nameEn: "Puerto Rico",
-          code: "PRI",
-          abbr: "波",
-          pool: "A",
-          reason: "金髮軍團 (Team Rubio)，電光藍",
-        },
-        BR: {
-          name: "巴西",
-          nameEn: "Brazil",
-          code: "BRA",
-          abbr: "西",
-          pool: "B",
-          reason: "金絲雀 (Canarinho)，黃綠配",
-        },
-        GB: {
-          name: "英國",
-          nameEn: "Great Britain",
-          code: "GBR",
-          abbr: "英",
-          pool: "B",
-          reason: "米字旗 (Union Jack)，皇家紅",
-        },
-        IT: {
-          name: "義大利",
-          nameEn: "Italy",
-          code: "ITA",
-          abbr: "義",
-          pool: "B",
-          reason: "藍色軍團 (Azzurri)，湛藍",
-        },
-        MX: {
-          name: "墨西哥",
-          nameEn: "Mexico",
-          code: "MEX",
-          abbr: "墨",
-          pool: "B",
-          reason: "三色軍團 (El Tri)，阿茲特克綠",
-        },
-        US: {
-          name: "美國",
-          nameEn: "USA",
-          code: "USA",
-          abbr: "美",
-          pool: "B",
-          reason: "星條旗 (Old Glory)，海軍深藍",
-        },
-        AU: {
-          name: "澳洲",
-          nameEn: "Australia",
-          code: "AUS",
-          abbr: "澳",
-          pool: "C",
-          reason: "國花金合歡，綠金配",
-        },
-        TW: {
-          name: "台灣",
-          nameEn: "Taiwan",
-          code: "TWN",
-          abbr: "台",
-          pool: "C",
-          reason: "CT 藍白",
-        },
-        CZ: {
-          name: "捷克",
-          nameEn: "Czechia",
-          code: "CZE",
-          abbr: "捷",
-          pool: "C",
-          reason: "波希米亞獅 (Bohemian Lion)，紅白藍",
-        },
-        JP: {
-          name: "日本",
-          nameEn: "Japan",
-          code: "JPN",
-          abbr: "日",
-          pool: "C",
-          reason: "侍ジャパン｜武士紺與日之丸紅",
-        },
-        KR: {
-          name: "南韓",
-          nameEn: "Korea",
-          code: "KOR",
-          abbr: "韓",
-          pool: "C",
-          reason: "太極旗，陰儀深藍",
-        },
-        DO: {
-          name: "多明尼加",
-          nameEn: "D.R.",
-          code: "DOM",
-          abbr: "多",
-          pool: "D",
-          reason: "香蕉力量 Plátano Power，紅藍白",
-        },
-        IL: {
-          name: "以色列",
-          nameEn: "Israel",
-          code: "ISR",
-          abbr: "以",
-          pool: "D",
-          reason: "大衛之星 / 六芒星，藍白配",
-        },
-        NL: {
-          name: "荷蘭",
-          nameEn: "Netherlands",
-          code: "NLD",
-          abbr: "荷",
-          pool: "D",
-          reason: "橘色軍團 (Oranje)，皇室奧蘭治",
-        },
-        NI: {
-          name: "尼加拉瓜",
-          nameEn: "Nicaragua",
-          code: "NIC",
-          abbr: "尼",
-          pool: "D",
-          reason: "藍白軍團 (Azul y Blanco)，淺天藍",
-        },
-        VE: {
-          name: "委內瑞拉",
-          nameEn: "Venezuela",
-          code: "VEN",
-          abbr: "委",
-          pool: "D",
-          reason: "紅酒軍團 (La Vinotinto)，酒紅色",
-        },
-      };
+const TEAM_INFO = {
+  CA: {
+    name: "加拿大",
+    nameEn: "Canada",
+    code: "CAN",
+    abbr: "加",
+    pool: "A",
+    reason:
+      "楓葉之國 (The Maple Leaf)，國旗鮮紅為核心國家識別（UI 以紅色作為高辨識主色）",
+  },
+  CO: {
+    name: "哥倫比亞",
+    nameEn: "Colombia",
+    code: "COL",
+    abbr: "哥",
+    pool: "A",
+    reason:
+      "國旗主色為黃，代表國家形象與文化意象（UI 取深金色以維持對比與可讀性）",
+  },
+  CU: {
+    name: "古巴",
+    nameEn: "Cuba",
+    code: "CUB",
+    abbr: "古",
+    pool: "A",
+    reason:
+      "革命棒球強權，國旗紅藍雙主色體系（UI 以藍色為主並調整亮度以適應亮暗模式）",
+  },
+  PA: {
+    name: "巴拿馬",
+    nameEn: "Panama",
+    code: "PAN",
+    abbr: "巴",
+    pool: "A",
+    reason:
+      "運河之國，國旗紅藍為主要識別（UI 依對戰情境選用紅色系以避免撞色）",
+  },
+  PR: {
+    name: "波多黎各",
+    nameEn: "Puerto Rico",
+    code: "PRI",
+    abbr: "波",
+    pool: "A",
+    reason:
+      "Team Rubio（金髮軍團），波多黎各棒球高度識別的藍色系（UI 延續亮藍語言）",
+  },
+  BR: {
+    name: "巴西",
+    nameEn: "Brazil",
+    code: "BRA",
+    abbr: "西",
+    pool: "B",
+    reason:
+      "金絲雀 (Canarinho)，黃綠為國家體育識別（UI 主色取綠以避免黃底對比問題）",
+  },
+  GB: {
+    name: "英國",
+    nameEn: "Great Britain",
+    code: "GBR",
+    abbr: "英",
+    pool: "B",
+    reason:
+      "米字旗 (Union Jack)，紅藍雙主色的國家識別（UI 取紅以避開多國藍色衝突）",
+  },
+  IT: {
+    name: "義大利",
+    nameEn: "Italy",
+    code: "ITA",
+    abbr: "義",
+    pool: "B",
+    reason:
+      "藍色軍團 (Azzurri)，義大利國家代表隊通用識別色（UI 延續高識別藍色系）",
+  },
+  MX: {
+    name: "墨西哥",
+    nameEn: "Mexico",
+    code: "MEX",
+    abbr: "墨",
+    pool: "B",
+    reason:
+      "三色軍團 (El Tri)，國家隊慣用深綠色系（UI 取綠色作為主要視覺）",
+  },
+  US: {
+    name: "美國",
+    nameEn: "USA",
+    code: "USA",
+    abbr: "美",
+    pool: "B",
+    reason:
+      "星條旗 (Old Glory)，USA Baseball 傳統海軍深藍（UI 延續官方棒球視覺）",
+  },
+  AU: {
+    name: "澳洲",
+    nameEn: "Australia",
+    code: "AUS",
+    abbr: "澳",
+    pool: "C",
+    reason:
+      "國花金合歡，澳洲體育通用綠金配色（UI 以深綠為主色）",
+  },
+  TW: {
+    name: "台灣",
+    nameEn: "Taiwan",
+    code: "TWN",
+    abbr: "台",
+    pool: "C",
+    reason:
+      "CT 藍白體系，取自國旗藍色（UI 略提亮以提升對戰與暗模式辨識）",
+  },
+  CZ: {
+    name: "捷克",
+    nameEn: "Czechia",
+    code: "CZE",
+    abbr: "捷",
+    pool: "C",
+    reason:
+      "波希米亞獅 (Bohemian Lion)，紅白藍國旗體系（UI 取冷灰藍以區隔多國藍色）",
+  },
+  JP: {
+    name: "日本",
+    nameEn: "Japan",
+    code: "JPN",
+    abbr: "日",
+    pool: "C",
+    reason:
+      "侍ジャパン，官方棒球品牌以武士紺與日之丸紅為核心（UI 主色取紅以避免藍色擁擠）",
+  },
+  KR: {
+    name: "南韓",
+    nameEn: "Korea",
+    code: "KOR",
+    abbr: "韓",
+    pool: "C",
+    reason:
+      "太極旗配色體系，陰儀深藍為國家隊核心識別（UI 延續深藍穩定感）",
+  },
+  DO: {
+    name: "多明尼加",
+    nameEn: "D.R.",
+    code: "DOM",
+    abbr: "多",
+    pool: "D",
+    reason:
+      "紅藍白國旗體系，多明尼加棒球慣用深紅色（UI 延續高情緒辨識）",
+  },
+  IL: {
+    name: "以色列",
+    nameEn: "Israel",
+    code: "ISR",
+    abbr: "以",
+    pool: "D",
+    reason:
+      "大衛之星／六芒星，國旗藍白為主要國家識別（UI 以藍色為主）",
+  },
+  NL: {
+    name: "荷蘭",
+    nameEn: "Netherlands",
+    code: "NLD",
+    abbr: "荷",
+    pool: "D",
+    reason:
+      "橘色軍團 (Oranje)，皇室奧蘭治橘為國家象徵（UI 使用深橘以提升對比）",
+  },
+  NI: {
+    name: "尼加拉瓜",
+    nameEn: "Nicaragua",
+    code: "NIC",
+    abbr: "尼",
+    pool: "D",
+    reason:
+      "藍白軍團 (Azul y Blanco)，國旗藍白體系（UI 取較深藍以提升可讀性）",
+  },
+  VE: {
+    name: "委內瑞拉",
+    nameEn: "Venezuela",
+    code: "VEN",
+    abbr: "委",
+    pool: "D",
+    reason:
+      "紅酒軍團 (La Vinotinto)，國家隊標誌性酒紅色（UI 延續深紅情緒）",
+  },
+};
+
 
       let DEFAULT_COLORS = {
         PR: "#1a79c1",
