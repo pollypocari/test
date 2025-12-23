@@ -116,7 +116,6 @@
         padding-bottom: 15px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
         gap: 10px;
         color: var(--text-main);
       }
@@ -364,7 +363,7 @@
         font-size: 0.9rem;
         font-weight: 700;
         color: var(--text-muted);
-        margin-bottom: 15px;
+        margin: 0 16px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         border-left: 4px solid #333;
@@ -700,6 +699,95 @@
     </div>
 
     <div id="poolsContainer"></div>
+    
+    <div class="pool-container" style="border-left: 5px solid #000">
+      <div class="pool-header">
+        <span class="pool-badge">2023</span>
+        WBC 淘汰賽配色測試（Pitcher UI）
+      </div>
+    
+      <!-- Quarterfinals -->
+      <div class="vs-label">複賽</div>
+      <div class="vs-grid">
+        <div class="match-wrapper">
+          <div class="match-date-header">
+            <span>Quarterfinal</span><span>澳洲 vs 古巴</span>
+          </div>
+          <div class="ui-pitcher">
+            <div class="pitcher-side side-AU"><div class="p-name">Starter</div><div class="p-nation">澳洲</div></div>
+            <div class="pitcher-side side-CU"><div class="p-name">Starter</div><div class="p-nation">古巴</div></div>
+          </div>
+        </div>
+    
+        <div class="match-wrapper">
+          <div class="match-date-header">
+            <span>Quarterfinal</span><span>義大利 vs 日本</span>
+          </div>
+          <div class="ui-pitcher">
+            <div class="pitcher-side side-IT"><div class="p-name">Starter</div><div class="p-nation">義大利</div></div>
+            <div class="pitcher-side side-JP"><div class="p-name">Starter</div><div class="p-nation">日本</div></div>
+          </div>
+        </div>
+    
+        <div class="match-wrapper">
+          <div class="match-date-header">
+            <span>Quarterfinal</span><span>波多黎各 vs 墨西哥</span>
+          </div>
+          <div class="ui-pitcher">
+            <div class="pitcher-side side-PR"><div class="p-name">Starter</div><div class="p-nation">波多黎各</div></div>
+            <div class="pitcher-side side-MX"><div class="p-name">Starter</div><div class="p-nation">墨西哥</div></div>
+          </div>
+        </div>
+    
+        <div class="match-wrapper">
+          <div class="match-date-header">
+            <span>Quarterfinal</span><span>美國 vs 委內瑞拉</span>
+          </div>
+          <div class="ui-pitcher">
+            <div class="pitcher-side side-US"><div class="p-name">Starter</div><div class="p-nation">美國</div></div>
+            <div class="pitcher-side side-VE"><div class="p-name">Starter</div><div class="p-nation">委內瑞拉</div></div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Semifinals -->
+      <div class="vs-label">決賽</div>
+      <div class="vs-grid">
+        <div class="match-wrapper">
+          <div class="match-date-header">
+            <span>Semifinal</span><span>古巴 vs 美國</span>
+          </div>
+          <div class="ui-pitcher">
+            <div class="pitcher-side side-CU"><div class="p-name">Starter</div><div class="p-nation">古巴</div></div>
+            <div class="pitcher-side side-US"><div class="p-name">Starter</div><div class="p-nation">美國</div></div>
+          </div>
+        </div>
+    
+        <div class="match-wrapper">
+          <div class="match-date-header">
+            <span>Semifinal</span><span>墨西哥 vs 日本</span>
+          </div>
+          <div class="ui-pitcher">
+            <div class="pitcher-side side-MX"><div class="p-name">Starter</div><div class="p-nation">墨西哥</div></div>
+            <div class="pitcher-side side-JP"><div class="p-name">Starter</div><div class="p-nation">日本</div></div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Final -->
+      <div class="vs-label">總決賽</div>
+      <div class="vs-grid">
+        <div class="match-wrapper">
+          <div class="match-date-header">
+            <span>Final</span><span>美國 vs 日本</span>
+          </div>
+          <div class="ui-pitcher">
+            <div class="pitcher-side side-US"><div class="p-name">Starter</div><div class="p-nation">美國</div></div>
+            <div class="pitcher-side side-JP"><div class="p-name">Starter</div><div class="p-nation">日本</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script id="scriptData">
       // --- 1. CONFIGURATION ---
@@ -931,10 +1019,10 @@
       };
 
       const POOL_META = {
-        A: { city: "San Juan, Puerto Rico", color: "#ccc" },
-        B: { city: "Houston, USA", color: "#ccc" },
-        C: { city: "Tokyo, Japan", color: "#ccc" },
-        D: { city: "Miami, USA", color: "#ccc" },
+        A: { city: "San Juan, Puerto Rico", color: "#222" },
+        B: { city: "Houston, USA", color: "#222" },
+        C: { city: "Tokyo, Japan", color: "#222" },
+        D: { city: "Miami, USA", color: "#222" },
       };
 
       const SCHEDULE = {
