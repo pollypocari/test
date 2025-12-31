@@ -645,7 +645,7 @@
     </style>
   </head>
   <body>
-    <h1>2026 WBC Palette Studio (v19.3)</h1>
+    <h1>2026 WBC Palette Studio (v19.4)</h1>
     <p class="intro">
       評估標準：<br />
       ① 是否符合國家 / 國旗／棒球賽事視覺記憶<br />
@@ -653,28 +653,18 @@
       ③ 與其他國家對戰時，是否能需分
     </p>
 
-    <!-- ===============================
-         ✅ JSON 匯出 Modal（UI 微調）
-    ================================ -->
-    <div class="modal-content">
-      <div class="modal-header">匯出色碼 (JSON 格式)</div>
-    
-      <!-- 新增：匯出模式選擇 -->
-      <select id="exportMode" class="btn" style="width: fit-content">
-        <option value="iso2">ISO2（回填用）</option>
-        <option value="iso3">ISO3（對外交付）</option>
-      </select>
-    
-      <textarea id="jsonOutput" class="modal-textarea" readonly></textarea>
-    
-      <div class="modal-actions">
-        <button class="btn" onclick="closeModal()">取消</button>
-        <button class="btn btn-primary" onclick="copyJson()">
-          複製到剪貼簿
-        </button>
+    <div id="jsonModal" class="modal-overlay" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">匯出色碼 (JSON 格式)</div>
+        <textarea id="jsonOutput" class="modal-textarea" readonly=""></textarea>
+        <div class="modal-actions">
+          <button class="btn" onclick="closeModal()">取消</button>
+          <button class="btn btn-primary" onclick="copyJson()">
+            複製到剪貼簿
+          </button>
+        </div>
       </div>
     </div>
-
 
     <div id="importModal" class="modal-overlay" style="display: none">
       <div class="modal-content">
@@ -853,11 +843,6 @@
     </div>
 
     <script id="scriptData">
-      const EXPORT_ORDER_ISO3 = [
-        "TWN","JPN","USA","KOR","VEN","MEX","PRI","PAN","CUB","NLD",
-        "AUS","DOM","COL","ITA","CZE","NIC","GBR","CAN","ISR","BRA",
-      ];
-      
       // --- 1. CONFIGURATION ---
       // 固定順序清單，用於 Batch Import
       const TEAM_ORDER = [
@@ -1149,51 +1134,21 @@
         localStorage.setItem("wbc_theme", next);
       }
 
-
-      /* ===============================
-         ✅ 匯出格式 A：ISO2（回填用）
-      ================================ */
-      function exportDefaultColorsISO2() {
+      // JSON EXPORT MODAL
+      function openJsonModal() {
         let lines = [];
         lines.push("let DEFAULT_COLORS = {");
+
         TEAM_ORDER.forEach((code) => {
           const hex = currentColors[code];
-          if (hex) lines.push(`  ${code}: "${hex}",`);
+          if (hex) {
+            lines.push(`  ${code}: "${hex}",`);
+          }
         });
+
         lines.push("};");
-        return lines.join("\n");
-      }
-      
-      /* ===============================
-         ✅ 匯出格式 B：ISO3（指定排序）
-      ================================ */
-      function exportColorsISO3() {
-        let lines = [];
-        lines.push("{");
-        EXPORT_ORDER_ISO3.forEach((iso3) => {
-          const iso2 = Object.keys(TEAM_INFO).find(
-            (k) => TEAM_INFO[k].code === iso3
-          );
-          if (!iso2) return;
-          const hex = currentColors[iso2];
-          if (hex) lines.push(`  ${iso3}: "${hex}",`);
-        });
-        lines.push("}");
-        return lines.join("\n");
-      }
-      
-      /* ===============================
-         ✅ 修改：JSON 匯出 Modal
-      ================================ */
-      function openJsonModal() {
-        const mode =
-          document.getElementById("exportMode")?.value || "iso2";
-      
-        const output =
-          mode === "iso3"
-            ? exportColorsISO3()
-            : exportDefaultColorsISO2();
-      
+
+        const output = lines.join("\n");
         document.getElementById("jsonOutput").value = output;
         document.getElementById("jsonModal").style.display = "flex";
       }
